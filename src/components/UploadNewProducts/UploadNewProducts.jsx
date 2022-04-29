@@ -3,7 +3,7 @@ import FileBase64 from 'react-file-base64';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
-import { createItem } from '../utilities/functions';
+import { createItem } from '../../utilities/functions';
 function UploadNewProducts() {
     const { register, handleSubmit, setValue,reset, formState: { errors } } = useForm();
     const [imgFile, setImgFile] = useState()
@@ -28,7 +28,7 @@ function UploadNewProducts() {
         <div className="flex items-center min-h-screen px-4 py-8 ">
             <div className="relative w-full max-w-lg mx-auto  rounded-md shadow-lg border border-cyan-400">
                 <div className="flex items-center justify-between p-4 border-b border-white">
-                    <h4 className="text-lg font-medium text-cyan-500">
+                    <h4 className="text-lg font-medium text-cyan-500 font-mont font-semibold">
                         Add new product
                     </h4>
                     

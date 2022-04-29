@@ -1,13 +1,13 @@
-import UploadNewProducts from './components/UploadNewProducts';
-import "./App.css"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./App.css";
+import Routing from './routing/Routing';
 function App() {
- 
+
   return (
     <div className="container">
-      <UploadNewProducts/>
-      <ToastContainer/>
+      <Routing />
+      <ToastContainer />
     </div>
   );
 }
