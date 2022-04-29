@@ -7,6 +7,7 @@ export default function Home() {
     <div>
       <Navbar/>
       <HeroSection/>
+      <HeroSection/>
     </div>
   )
 }
