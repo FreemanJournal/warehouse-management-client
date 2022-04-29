@@ -3,7 +3,7 @@ import FileBase64 from 'react-file-base64';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
-import { createItem } from '../../utilities/functions';
+import { createItem } from '../../api/apiHandler';
 function UploadNewProducts() {
     const { register, handleSubmit, setValue,reset, formState: { errors } } = useForm();
     const [imgFile, setImgFile] = useState()
