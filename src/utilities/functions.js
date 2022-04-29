@@ -7,9 +7,9 @@ export const getItems = async () => {
         console.log(error)
     }
 }
-export const createItem = async (todo) => {
+export const createItem = async (item) => {
     try {
-        const { data } = await api.createItem(todo);
+        const { data } = await api.createItem(item);
         return data
     } catch (error) {
         console.log(error)
