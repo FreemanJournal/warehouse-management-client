@@ -1,8 +1,8 @@
 import { Disclosure } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { signOut } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { BsList, BsListNested } from 'react-icons/bs'
 import { NavLink, useNavigate } from 'react-router-dom'
 import auth from '../../utilities/firebase.init'
 
@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <div className="absolute inset-0">
-      <Disclosure as="nav" className="bg-transparent sticky">
+      <Disclosure as="nav" className="bg-transparent">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-2 md:px-6 lg:px-8">
@@ -36,9 +36,9 @@ export default function Navbar() {
                 <div className="absolute mt-10 right-0 flex items-center md:hidden">
                   <Disclosure.Button className="p-2 rounded-md text-slate-800  focus:outline-none">
                     {open ? (
-                      <XIcon className="block h-6 w-6"  />
+                      <BsListNested className="block h-6 w-6"  />
                     ) : (
-                      <MenuIcon className="block h-6 w-6" />
+                      <BsList className="block h-6 w-6" />
                     )}
                   </Disclosure.Button>
                 </div>
