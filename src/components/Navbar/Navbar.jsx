@@ -26,7 +26,7 @@ export default function Navbar() {
   ]
 
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 top-3">
       <Disclosure as="nav" className="bg-transparent">
         {({ open }) => (
           <>
@@ -45,7 +45,7 @@ export default function Navbar() {
                 {/* Desktop Menu */}
                 <div className=" flex-1 flex items-center justify-center md:items-stretch md:justify-between mt-10">
                   <div className="flex-shrink-0 flex items-center">
-                    <h1 className='text-slate-600 uppercase text-2xl tracking-wide font-mont font-bold cursor-pointer' onClick={() => navigate('/')} >The green warehouse</h1>
+                    <h1 className='text-slate-600 drop-shadow-lg uppercase text-2xl tracking-wide font-mont font-bold cursor-pointer' onClick={() => navigate('/')} >The green warehouse</h1>
                   </div>
                   <div className="hidden md:block md:ml-6">
                     <div className="flex space-x-4 my-5">

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function HeroSection() {
   return (
-    <div className="bg-amber-300 m-3 mb-0 rounded-t-lg" >
+    <div className="bg-amber-300 m-3 mb-0 rounded-lg" >
      
       <div className="flex flex-col items-center justify-center  px-4 lg:px-8 py-24">
           <div className="h-96">

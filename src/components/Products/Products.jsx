@@ -1,15 +1,10 @@
-import { toBeInTheDocument } from '@testing-library/jest-dom/dist/matchers';
-import React, { useContext, useEffect, useState } from 'react'
-import { getItems } from '../../api/apiHandler';
+import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
 
 export default function Products() {
     const { products } = useContext(GlobalContext);
-
-    console.log('products', products);
-
     return (
-        <div className="bg-amber-300 m-3 mt-0 rounded-b-lg" >
+        <div className="bg-amber-300 m-3  rounded-lg" >
 
             <div className="flex flex-col items-center justify-center  px-4 lg:px-8 py-24">
                 <h3 className="text-slate-600 font-bold border-4  border-slate-600 py-2 px-24 font-mont text-center md:text-xl my-5 tracking-wider select-none uppercase">
