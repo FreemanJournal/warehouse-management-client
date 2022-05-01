@@ -5,8 +5,6 @@ export default function FaqsCard({ faqsList, idx }) {
     const [state, setState] = useState(false)
     const [answerH, setAnswerH] = useState('0px')
 
-    console.log('faqsList', faqsList);
-    console.log('idx', idx);
 
     const handleOpenAnswer = () => {
         const answerElH = answerElRef.current.childNodes[0].offsetHeight

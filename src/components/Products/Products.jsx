@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
+import {useNavigate} from "react-router-dom";
 
 export default function Products() {
     const { products } = useContext(GlobalContext);
+    const navigate = useNavigate();
     return (
         <section className="bg-amber-300 m-3  rounded-lg" >
 
@@ -13,7 +15,7 @@ export default function Products() {
                 <div className="home-products grid grid-cols-1 md:grid-cols-3 w-full mt-24 gap-10">
                     {
                         products?.slice(0, 6)?.map((item, index) => {
-                            const { description, image, price, quantity, supplier, title } = item
+                            const { _id,description, image, price, quantity, supplier, title } = item
                             return (
 
                                 <div key={index} className=" flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-white rounded-lg shadow-lg justify-self-center max-w-sm">
@@ -47,7 +49,7 @@ export default function Products() {
                                             </span>
                                         </div>
 
-                                        <button type="button" className="py-2 px-4  mt-5 bg-slate-600 hover:bg-slate-700 focus:ring-slate-500 focus:ring-offset-slate-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                                        <button type="button" className="py-2 px-4  mt-5 bg-slate-600 hover:bg-slate-700 focus:ring-slate-500 focus:ring-offset-slate-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={()=>navigate(`/inventory/${_id}`)}>
                                             Update
                                         </button>
 

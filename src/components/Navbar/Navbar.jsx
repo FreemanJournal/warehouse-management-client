@@ -61,12 +61,12 @@ export default function Navbar() {
                         </NavLink>
                       ))}
                       {/* Log Out */}
-                      {user && <button
+                      {/* {user && <button
                         className='bg-transparent  cursor-pointer text-slate-400  hover:text-slate-900 block px-3 py-2 rounded-md text-base font-medium'
                         onClick={() => signOut(auth)}
                       >
-                        SignOut
-                      </button>}
+                        Logout
+                      </button>} */}
                     </div>
                   </div>
                 </div>
@@ -89,12 +89,12 @@ export default function Navbar() {
                     </Disclosure.Button>
                   )
                 })}
-                {/* Sign Out */}
+                {/* Log Out */}
                 {/* {user && <button
                   className='w-full bg-transparent border cursor-pointer text-slate-500 hover:bg-gray-200 hover:text-slate-900 px-3 py-2 rounded-md text-base font-medium'
                   onClick={() => signOut(auth)}
                 >
-                  SignOut
+                  Logout
                 </button>} */}
               </div>
             </Disclosure.Panel>
