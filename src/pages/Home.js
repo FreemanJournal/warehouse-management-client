@@ -1,4 +1,5 @@
 import React from 'react'
+import FAQ from '../components/FAQ/FAQ'
 import HeroSection from '../components/HeroSection/HeroSection'
 import Navbar from '../components/Navbar/Navbar'
 import Products from '../components/Products/Products'
@@ -11,6 +12,7 @@ export default function Home() {
       <HeroSection/>
       <Products/>
       <Testimonial/>
+      <FAQ/>
     </div>
   )
 }
