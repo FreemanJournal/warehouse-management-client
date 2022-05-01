@@ -26,7 +26,7 @@ export default function Navbar() {
   ]
 
   return (
-    <div className="absolute inset-0 top-3">
+    <section className="absolute inset-0 top-3">
       <Disclosure as="nav" className="bg-transparent">
         {({ open }) => (
           <>
@@ -101,6 +101,6 @@ export default function Navbar() {
           </>
         )}
       </Disclosure>
-    </div>
+    </section>
   )
 }

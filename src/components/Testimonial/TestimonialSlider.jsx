@@ -1,37 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RiDoubleQuotesL, RiStarFill, RiStarLine } from 'react-icons/ri';
 import Rating from "react-rating";
 import { Autoplay, Navigation, Pagination, Parallax } from "swiper";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { getFeedBacks } from "../../api/api";
+
 
 import "./styles.css";
 
 export default function TestimonialSlider() {
-    const feedback = [
-        {
-            comment: "Very professional and organized.Highly Recommended!!",
-            rating: 4,
-            name: "Faizur Rahman Khan"
-        },
-        {
-            comment: "The green Warehouse is a thoroughly professional, customer focused racking supplier offering a wide range of services to any business in a warehouse environment.",
-            rating: 5,
-            name: "Sheikh Mujibur Rahman"
-        },
-        {
-            comment: "They are very good  at pallet racking, picking shelves, automated warehouses and logistics software.Try them.Recommended",
-            rating: 4.5,
-            name: "Sohel Taj"
-        },
-    ]
+    const [feedback,setFeedback] = useState([])
+
+    useEffect(()=>{
+        const getFeedback = async ()=>{
+            const result = await getFeedBacks()
+            setFeedback(result.data)
+        }
+        getFeedback();
+    },[])
+
+ 
     return (
         <>
             <Swiper
                 style={{
                     "--swiper-navigation-color": "#fff",
                     "--swiper-pagination-color": "#fff",
+
                 }}
                 speed={600}
                 parallax={true}
@@ -50,9 +47,9 @@ export default function TestimonialSlider() {
                 <div
                     slot="container-start"
                     className="parallax-bg bg-transparent"
-                    // style={{
-                    //     backgroundImage: 'url("/images/single-banner.jpg")',
-                    // }}
+                    style={{
+                        backgroundImage: 'url("/images/single-banner.jpg")',
+                    }}
                 // data-swiper-parallax="-23%"
                 ></div>
                 {
@@ -62,11 +59,11 @@ export default function TestimonialSlider() {
                             <SwiperSlide className="text-center" key={index}>
 
                                 <div className="testimonial-card">
-                                    <div className="md:w-1/2 mx-auto text-slate-600">
+                                    <div className="md:w-1/2 mx-auto ">
                                         <i className=""> <RiDoubleQuotesL /> </i>
                                         <p>{comment}</p>
-                                        <h5 className="font-bold font-mont">{name}</h5>
-                                        <div className="text-emerald-400">
+                                        <h5 className="font-bold font-mont text-emerald-400">{name}</h5>
+                                        <div className="text-yellow-400">
                                             <Rating initialRating={rating} readonly fullSymbol={<RiStarFill className="" />} emptySymbol={<RiStarLine />} />
                                         </div>
                                     </div>
