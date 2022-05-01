@@ -15,8 +15,8 @@ export default function TestimonialSlider() {
 
     useEffect(()=>{
         const getFeedback = async ()=>{
-            const result = await getFeedBacks()
-            setFeedback(result.data)
+            const {data} = await getFeedBacks()
+            setFeedback(data)
         }
         getFeedback();
     },[])
@@ -59,10 +59,10 @@ export default function TestimonialSlider() {
                             <SwiperSlide className="text-center" key={index}>
 
                                 <div className="testimonial-card">
-                                    <div className="md:w-1/2 mx-auto ">
+                                    <div className="md:w-1/2 mx-auto">
                                         <i className=""> <RiDoubleQuotesL /> </i>
-                                        <p>{comment}</p>
-                                        <h5 className="font-bold font-mont text-emerald-400">{name}</h5>
+                                        <p className="">{comment}</p>
+                                        <h5 className="font-bold font-mont">{name}</h5>
                                         <div className="text-yellow-400">
                                             <Rating initialRating={rating} readonly fullSymbol={<RiStarFill className="" />} emptySymbol={<RiStarLine />} />
                                         </div>

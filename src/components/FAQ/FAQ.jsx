@@ -1,114 +1,63 @@
-// import React from 'react'
 
-// export default function FAQ() {
-//   return (
-//     <section className="bg-amber-300 m-3  rounded-lg" >
-//             <div className="flex flex-col items-center justify-center  px-4 lg:px-8 py-24">
-//                 <h3 className="text-slate-600 font-bold border-4 mb-10 border-slate-600 py-2 px-24 font-mont text-center md:text-xl my-5 tracking-wider select-none uppercase">
-//                     FAQ
-//                 </h3>
+import { useEffect, useRef, useState } from "react"
+import { getFaq } from "../../api/api"
+import FaqsCard from "./FaqsCard";
 
 
-
-//             </div>
-//         </section>
-//   )
-// }
-import { useRef, useState } from "react"
-
-const FaqsCard = (props) => {
-
-  const answerElRef = useRef()
-  const [state, setState] = useState(false)
-  const [answerH, setAnswerH] = useState('0px')
-  const { faqsList, idx } = props
-
-  const handleOpenAnswer = () => {
-    const answerElH = answerElRef.current.childNodes[0].offsetHeight
-    setState(!state)
-    setAnswerH(`${answerElH + 20}px`)
-  }
-
-  return (
-    <div
-      className="space-y-3 mt-5 overflow-hidden border-b"
-      key={idx}
-      onClick={handleOpenAnswer}
-    >
-      <h4 className="cursor-pointer pb-5 flex items-center justify-between text-lg text-gray-700 font-medium">
-        {faqsList.q}
-        {
-          state ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
-          )
-        }
-      </h4>
-      <div
-        ref={answerElRef} className="duration-300"
-        style={state ? { height: answerH } : { height: '0px' }}
-      >
-        <div>
-          <p className="text-gray-500">
-            {faqsList.a}
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default function FAQ() {
+  const [faqsList, setFaqsList] = useState([]);
 
-  const faqsList = [
-    {
-      q: "What are some random questions to ask?",
-      a: "That's exactly the reason we created this random question generator. There are hundreds of random questions to choose from so you're able to find the perfect random question."
-    },
-    {
-      q: "Do you include common questions?",
-      a: "This generator doesn't include most common questions. The thought is that you can come up with common questions on your own so most of the questions in this generator."
-    },
-    {
-      q: "Can I use this for 21 questions?",
-      a: "Yes! there are two ways that you can use this question generator depending on what you're after. You can indicate that you want 21 questions generated."
-    },
-    {
-      q: "Are these questions for girls or for boys?",
-      a: "The questions in this generator are gender neutral and can be used to ask either male of females (or any other gender the person identifies with)."
-    },
-    {
-      q: "What do you wish you had more talent doing?",
-      a: "If you've been searching for a way to get random questions, you've landed on the correct webpage. We created the Random Question Generator to ask you as many random questions as your heart desires."
+  useEffect(() => {
+    const getFaqs = async () => {
+      const { data } = await getFaq()
+      setFaqsList(data)
     }
-  ]
+    getFaqs();
+  }, [])
+
+
+  // const faqsList = [
+  //   {
+  //     question: "What industries do you specialize in?",
+  //     answer: "We are specialize in agricultural products.We are a very flexible warehouse and are open to offering our services to pretty much any situation."
+  //   },
+  //   {
+  //     question: "How are warehouse rates determined?",
+  //     answer: "Warehouse rates are determined by the warehouse footprint of the product, how quickly the product will be moving in and out of the warehouse as well as any specific handling and shipping requirements that are required of an individual product. We believe that there is no one price fits all when it comes to warehousing products and we will structure our pricing to be competitive and meet the needs of our customers."
+  //   },
+  //   {
+  //     question: "What do you consider short term and long term storage?",
+  //     answer: "Short term is usually considered when storing a customers product for less than a month. Long term storage is usually considered storage of products that will be in our warehouse for a minimum of 1 month and beyond."
+  //   },
+  //   {
+  //     question: "Will my goods be safe in your warehouse?",
+  //     answer: "All of our safe warehouses are equipped with the highest level of security for your goods, including: 24/7 state-of-the-art video monitoring with 30+ day retention, cell connected security systems, as well as patrolled yards."
+  //   }
+
+  // ]
 
   return (
-    <section className="leading-relaxed max-w-screen-xl mt-12 mx-auto px-4 lg:px-8">
-      <div className="space-y-3 text-center">
-        <h1 className="text-3xl text-gray-800 font-semibold">
+
+    <section className="bg-amber-300 m-3  rounded-lg" >
+      <div className="flex flex-col items-center justify-center  px-4 lg:px-8 py-24">
+        <h3 className="text-slate-600 font-bold border-4 mb-10 border-slate-600 py-2 px-24 font-mont text-center md:text-xl my-5 tracking-wider select-none uppercase">
           Frequently Asked Questions
-        </h1>
-        <p className="text-gray-600 max-w-lg mx-auto text-lg">
-          Answered all frequently asked questions, Still confused? feel free to contact us.
-        </p>
-      </div>
-      <div className="mt-14 max-w-2xl mx-auto">
-        {
-          faqsList.map((item, idx) => (
-            <FaqsCard
-              idx={idx}
-              faqsList={item}
-            />
-          ))
-        }
+        </h3>
+        <div className="mt-14 max-w-2xl mx-auto">
+          {
+            faqsList?.map((item, idx) => (
+              <FaqsCard
+                key={idx}
+                idx={idx}
+                faqsList={item}
+              />
+            ))
+          }
+        </div>
       </div>
     </section>
+
   )
 }
 

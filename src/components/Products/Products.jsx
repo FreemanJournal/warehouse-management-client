@@ -16,7 +16,7 @@ export default function Products() {
                             const { description, image, price, quantity, supplier, title } = item
                             return (
 
-                                <div className=" flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-white rounded-lg shadow-lg justify-self-center max-w-sm">
+                                <div key={index} className=" flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-white rounded-lg shadow-lg justify-self-center max-w-sm">
 
                                     <div className="relative pt-10 px-10 flex items-center justify-center">
                                         <div className="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
