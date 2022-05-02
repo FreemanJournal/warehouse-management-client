@@ -7,7 +7,7 @@ export const GlobalContext = createContext({});
 export const GlobalProvider = ({ children }) => {
     const {items,isLoading,isError} = useGetProduct();
     const [products, setProducts] = useState();
-    console.log('items',items);
+  
 
     useEffect(()=>{
         setProducts(items)

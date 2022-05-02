@@ -5,12 +5,15 @@ import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 import { getItems, updateItemQtn } from '../../api/api';
 import { GlobalContext } from '../../context/GlobalContext';
+import useGetProduct from '../../hooks/useGetProduct';
 import "./sweetAlert.css";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function SingleProducts({ id }) {
     const { products, setProducts } = useContext(GlobalContext);
+    const { mutate } = useGetProduct()
+
     let productDetails = products?.find(item => item._id === id) || {}
     const { _id, productId, description, image, price, quantity, supplier, title } = productDetails
     const [productQuantity, setProductQuantity] = useState(quantity);
@@ -22,17 +25,19 @@ export default function SingleProducts({ id }) {
 
 
     const deliveredHandler = async (qtn) => {
-        console.log('qtn', qtn);
+       
         if (parseInt(qtn) >= 0) {
             try {
                 const { data: updateData } = await updateItemQtn({ productQuantity: qtn, productId });
                 if (updateData) {
                     toast.success(`${title} quantity updated!`, { toastId: 1 })
+                    mutate()
                 } else {
                     return;
                 }
-                const { data } = await getItems();
-                setProducts(data)
+                // const { data } = await getItems();
+                // setProducts(data)
+               
 
             } catch (error) {
                 toast.error(`${title} quantity failed to update!`, { toastId: 2 })

@@ -20,11 +20,7 @@ export default function ManageInventories() {
             } else {
                 toast.error("Delete failed.")
             }
-
         }
-
-
-
     }
     return (
 

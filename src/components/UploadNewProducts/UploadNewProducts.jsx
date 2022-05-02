@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import FileBase64 from 'react-file-base64';
 import { useForm } from 'react-hook-form';
 import { Slide } from 'react-reveal';
@@ -6,16 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { createItem } from '../../api/apiHandler';
-import { GlobalContext } from '../../context/GlobalContext';
 import useGetProduct from '../../hooks/useGetProduct';
 function UploadNewProducts() {
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
-    const {items,isLoading,isError} = useGetProduct();
-    const {setProducts} = useContext(GlobalContext)
+    const { mutate } = useGetProduct()
     const navigate = useNavigate()
     const [imgFile, setImgFile] = useState()
     const customId = "custom-id-yes";
     const imageToast = "custom-id-no";
+
+
+
+
     const onCreateProductHandler = async (value) => {
         if (!value?.image) {
             toast.error("Please provide a image!!", { toastId: imageToast })
@@ -23,7 +25,7 @@ function UploadNewProducts() {
         }
         const result = await createItem(value)
         if (result) {
-            setProducts(items)
+            mutate()
             toast.success("Product added successfully.")
             reset()
             setImgFile()
