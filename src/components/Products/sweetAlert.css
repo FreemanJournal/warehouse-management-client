@@ -1,0 +1,24 @@
+.swal-modal {
+    background-color: #F7CD2E;
+    border: 3px solid transparent;
+}
+
+.swal-text {
+    color: #242B2E;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.swal-button{
+    padding: 7px 3em; 
+    border-radius: 8pt;
+    background-color: #38CC77;
+    border: none;
+   
+}
+
+.swal-button--confirm:hover {
+
+    background-color: #02B290!important;
+
+}

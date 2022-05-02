@@ -1,30 +1,76 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { Slide } from 'react-reveal';
-import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import swal from 'sweetalert';
 import { getItems, updateItemQtn } from '../../api/api';
 import { GlobalContext } from '../../context/GlobalContext';
+import "./sweetAlert.css";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function SingleProducts({ id }) {
     const { products, setProducts } = useContext(GlobalContext);
     let productDetails = products?.find(item => item._id === id) || {}
     const { _id, productId, description, image, price, quantity, supplier, title } = productDetails
     const [productQuantity, setProductQuantity] = useState(quantity);
-    useEffect(() => setProductQuantity(quantity), [quantity])
-    
+    useEffect(() => setProductQuantity(quantity), [quantity]);
 
-    const deliveredHandler = async () => {
+    // const { data, error } = useSWR(
+    //     "https://api.github.com/repos/vercel/swr",
+    //     fetcher
+    //   );
+
+
+    const deliveredHandler = async (qtn) => {
         if (productQuantity > 0) {
-            const {result,qtn} = await updateItemQtn({ productQuantity: productQuantity - 1, productId });
-            console.log('result',result,qtn);
-            if (result) {
-                toast.success(`${title} quantity updated!`,{toastId:1})
-            } else {
-                toast.error(`${title} quantity failed to update!`)
+            try {
+                const { data: updateData } = await updateItemQtn({ productQuantity: qtn, productId });
+                if (updateData) {
+                    toast.success(`${title} quantity updated!`, { toastId: 1 })
+                } else {
+                    return;
+                }
+                const { data } = await getItems();
+                setProducts(data)
+
+            } catch (error) {
+                toast.error(`${title} quantity failed to update!`, { toastId: 2 })
             }
-            const { data } = await getItems();
-            setProducts(data)
         }
+    }
+    const restockHandler = async () => {
+        try {
+            const quantity = await swal({
+                text: 'Product Quantity',
+                className: "blue-bg",
+                content: {
+                    element: "input",
+                    attributes: {
+                        placeholder: productQuantity,
+                        type: "number"
+                    }
+                },
+
+                button: {
+                    text: "Update",
+                    closeModal: false,
+                },
+            })
+            if (quantity) {
+                deliveredHandler(quantity)
+                swal.stopLoading();
+                swal.close();
+            } else {
+                swal.stopLoading();
+                swal.close();
+
+            }
+
+        } catch (error) {
+            toast.error(`${title} quantity failed to update!`, { toastId: 2 })
+
+        }
+
 
     }
 
@@ -76,10 +122,10 @@ export default function SingleProducts({ id }) {
                                 </div>
                                 <div className="mt-12">
                                     <div className="rounded-md  flex gap-10">
-                                        <button type="button" onClick={deliveredHandler} className="py-2 px-4  bg-emerald-600 hover:bg-emerald-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg">
+                                        <button type="button" onClick={() => deliveredHandler(productQuantity - 1)} className="py-2 px-4  bg-emerald-600 hover:bg-emerald-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg">
                                             Delivered
                                         </button>
-                                        <button type="button" className="py-2 px-4  bg-slate-600 hover:bg-slate-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
+                                        <button type="button" onClick={restockHandler} className="py-2 px-4  bg-slate-600 hover:bg-slate-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
                                             Restock
                                         </button>
                                     </div>
