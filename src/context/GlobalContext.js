@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-import { getItems } from "../api/apiHandler";
+import { getItems } from "../api/api";
+
 
 export const GlobalContext = createContext({});
 
@@ -8,13 +9,13 @@ export const GlobalProvider = ({ children }) => {
 
     useEffect(() => {
         const run = async () => {
-            const result = await getItems();
-            setProducts(result)
+            const {data} = await getItems();
+            setProducts(data)
         }
         run();
     }, [])
 
-    return (<GlobalContext.Provider value={{products}}>
+    return (<GlobalContext.Provider value={{products,setProducts}}>
         {children}
     </GlobalContext.Provider>)
 }

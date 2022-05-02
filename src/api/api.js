@@ -5,4 +5,5 @@ const faqUrl = `${process.env.REACT_APP_uri}/faq`;
 export const getItems = () => axios.get(url);
 export const getFeedBacks = () => axios.get(feedbackUrl);
 export const getFaq = () => axios.get(faqUrl);
-export const createItem = (item) => axios.post(url, item);
+export const createItem = (item) => axios.put(url, item);
+export const updateItemQtn = (qtn) => axios.put(`${url}/qtnUpdate`, qtn);
