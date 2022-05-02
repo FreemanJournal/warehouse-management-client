@@ -1,9 +1,31 @@
 import React, { useContext } from 'react'
+import { Slide } from 'react-reveal';
+import { toast } from 'react-toastify';
+import swal from 'sweetalert';
+import { deleteItem, getItems } from '../../api/api';
 import { GlobalContext } from "../../context/GlobalContext";
 export default function ManageInventories() {
-    const { products } = useContext(GlobalContext)
+    const { products,setProducts } = useContext(GlobalContext)
     const tableHead = ['Products', 'Price', 'Quantity', 'Supplier', 'Status', '']
-    // const { _id, description, image, price, quantity, supplier, title } = item
+    const onDeleteHandler = async (id, title) => {
+        const value = await swal({ title: `Do you want to delete ${title} ?` })
+        if (value) {
+            const { data } = await deleteItem(id)
+            console.log(data);
+            if (data) {
+                toast.success(`${title} successfully deleted ?`)
+                const { data } = await getItems();
+                setProducts(data)
+            }else{
+                toast.error("Delete failed.")
+            }
+
+        }
+
+        // const { data } = await deleteItem(id)
+
+
+    }
     return (
 
         <>
@@ -29,56 +51,60 @@ export default function ManageInventories() {
                                         const { _id, description, image, price, quantity, supplier, title } = item
                                         return (
                                             <tr>
-                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <div className="flex items-center">
-                                                        <div className="flex-shrink-0">
-                                                            <img alt="profil" src={image} className="mx-auto object-cover rounded-full h-10 w-10 " />
+                                                <Slide top big>
+                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                        <div className="flex items-center">
+                                                            <div className="flex-shrink-0">
+                                                                <img alt="profil" src={image} className="mx-auto object-cover rounded-full h-10 w-10 " />
 
+                                                            </div>
+                                                            <div className="ml-3">
+                                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                                    {title}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div className="ml-3">
-                                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                                {title}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p className="text-gray-900 whitespace-no-wrap">
-                                                        {price}
-                                                    </p>
-                                                </td>
-                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p className="text-gray-900 whitespace-no-wrap">
-                                                        {quantity}
-                                                    </p>
-                                                </td>
-                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <p className="text-gray-900 whitespace-no-wrap">
-                                                        {supplier}
-                                                    </p>
-                                                </td>
-                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                                        {parseInt(quantity) === 0 ? <>
-                                                            <span aria-hidden="true" className="absolute inset-0 bg-pink-600  rounded-full">
-                                                            </span>
-                                                            <span className="relative text-white">
-                                                                sold
-                                                            </span>
-                                                        </> : <>
-                                                            <span aria-hidden="true" className="absolute inset-0 bg-green-200 opacity-50 rounded-full">
-                                                            </span>
-                                                            <span className="relative">
-                                                                available
-                                                            </span>
-                                                        </>}
-                                                    </span>
-                                                </td>
-                                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                    <button className="text-indigo-600 hover:text-indigo-900">
-                                                        Delete
-                                                    </button>
-                                                </td>
+                                                    </td>
+                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                        <p className="text-gray-900 whitespace-no-wrap">
+                                                            {price}
+                                                        </p>
+                                                    </td>
+                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                        <p className="text-gray-900 whitespace-no-wrap">
+                                                            {quantity}
+                                                        </p>
+                                                    </td>
+                                                </Slide>
+                                                <Slide top big>
+                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                        <p className="text-gray-900 whitespace-no-wrap">
+                                                            {supplier}
+                                                        </p>
+                                                    </td>
+                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                                            {parseInt(quantity) === 0 ? <>
+                                                                <span aria-hidden="true" className="absolute inset-0 bg-pink-600  rounded-full">
+                                                                </span>
+                                                                <span className="relative text-white">
+                                                                    sold
+                                                                </span>
+                                                            </> : <>
+                                                                <span aria-hidden="true" className="absolute inset-0 bg-green-200 rounded-full">
+                                                                </span>
+                                                                <span className="relative">
+                                                                    available
+                                                                </span>
+                                                            </>}
+                                                        </span>
+                                                    </td>
+                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                        <button className="text-pink-600 hover:text-pink-900" onClick={() => onDeleteHandler(_id, title)}>
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </Slide>
                                             </tr>
                                         )
 
@@ -88,7 +114,7 @@ export default function ManageInventories() {
 
                             </tbody>
                         </table>
-                        <div className=" px-5 bg-white py-5 flex flex-col xs:flex-row items-center xs:justify-between">
+                        {/* <div className=" px-5 bg-white py-5 flex flex-col xs:flex-row items-center xs:justify-between">
                             <div className="flex items-center">
                                 <button type="button" className="w-full p-4 border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100">
                                     <svg width="9" fill="currentColor" height="8" className="" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -115,7 +141,7 @@ export default function ManageInventories() {
                                     </svg>
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
