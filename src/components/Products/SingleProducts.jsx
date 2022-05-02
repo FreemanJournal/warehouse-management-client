@@ -13,7 +13,10 @@ export default function SingleProducts({ id }) {
     let productDetails = products?.find(item => item._id === id) || {}
     const { _id, productId, description, image, price, quantity, supplier, title } = productDetails
     const [productQuantity, setProductQuantity] = useState(quantity);
-    useEffect(() => setProductQuantity(quantity), [quantity]);
+    useEffect(() => {
+        setProductQuantity(quantity)
+        
+    }, [quantity]);
 
     // const { data, error } = useSWR(
     //     "https://api.github.com/repos/vercel/swr",
@@ -22,7 +25,8 @@ export default function SingleProducts({ id }) {
 
 
     const deliveredHandler = async (qtn) => {
-        if (productQuantity > 0) {
+        console.log('qtn', qtn);
+        if (parseInt(qtn) >= 0) {
             try {
                 const { data: updateData } = await updateItemQtn({ productQuantity: qtn, productId });
                 if (updateData) {
@@ -56,7 +60,7 @@ export default function SingleProducts({ id }) {
                     closeModal: false,
                 },
             })
-            if (quantity) {
+            if (parseInt(quantity) >= 0) {
                 deliveredHandler(quantity)
                 swal.stopLoading();
                 swal.close();
@@ -122,8 +126,8 @@ export default function SingleProducts({ id }) {
                                 </div>
                                 <div className="mt-12">
                                     <div className="rounded-md  flex gap-10">
-                                        <button type="button" onClick={() => deliveredHandler(productQuantity - 1)} className="py-2 px-4  bg-emerald-600 hover:bg-emerald-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg">
-                                            Delivered
+                                        <button type="button" onClick={() => deliveredHandler(productQuantity - 1)} className={` ${productQuantity ? "bg-emerald-600" : "bg-pink-600 pointer-events-none"} py-2 px-4  hover:bg-emerald-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg`}>
+                                            {productQuantity ? "Delivered" : "Sold"}
                                         </button>
                                         <button type="button" onClick={restockHandler} className="py-2 px-4  bg-slate-600 hover:bg-slate-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
                                             Restock
