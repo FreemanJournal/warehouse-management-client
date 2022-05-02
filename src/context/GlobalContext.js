@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { getItems } from "../api/api";
 import useGetProduct from "../hooks/useGetProduct";
 
 
@@ -13,14 +12,6 @@ export const GlobalProvider = ({ children }) => {
     useEffect(()=>{
         setProducts(items)
     },[items])
-
-    // useEffect(() => {
-    //     const run = async () => {
-    //         const {data} = await getItems();
-    //         setProducts(data)
-    //     }
-    //     run();
-    // }, [])
 
     return (<GlobalContext.Provider value={{products,setProducts,isLoading,isError}}>
         {children}

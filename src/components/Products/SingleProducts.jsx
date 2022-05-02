@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Slide } from 'react-reveal';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 import { getItems, updateItemQtn } from '../../api/api';
@@ -13,14 +14,11 @@ export default function SingleProducts({ id }) {
     let productDetails = products?.find(item => item._id === id) || {}
     const { _id, productId, description, image, price, quantity, supplier, title } = productDetails
     const [productQuantity, setProductQuantity] = useState(quantity);
+    const navigate = useNavigate();
+
     useEffect(() => {
         setProductQuantity(quantity)
     }, [quantity]);
-
-    // const { data, error } = useSWR(
-    //     "https://api.github.com/repos/vercel/swr",
-    //     fetcher
-    //   );
 
 
     const deliveredHandler = async (qtn) => {
@@ -79,7 +77,7 @@ export default function SingleProducts({ id }) {
 
 
     return (
-        <section className="bg-amber-300 m-3 pt-10  rounded-lg" >
+        <section className="bg-amber-300 m-3 pt-10  rounded-lg flex flex-col" >
             <div className="  px-6 py-8 lg:flex-shrink-1 lg:p-12">
                 <div className="mt-8 flex flex-col md:flex-row gap-5 overflow-hidden">
                     <div class="text-center w-full flex ">
@@ -134,11 +132,17 @@ export default function SingleProducts({ id }) {
                                     </div>
                                 </div>
                             </div>
+
                         </Slide>
+
                     </div>
                 </div>
             </div>
-
+            <Slide bottom>
+                <button type="button" onClick={() => navigate('/manageInventory')} className="py-2 px-4 w-56 mx-auto  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
+                    Manage Inventories
+                </button>
+            </Slide>
 
         </section>
     )

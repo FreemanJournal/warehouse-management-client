@@ -1,28 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
+import { BsTrash } from "react-icons/bs";
 import { Slide } from 'react-reveal';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
-import { deleteItem, getItems } from '../../api/api';
+import { deleteItem } from '../../api/api';
 import { GlobalContext } from "../../context/GlobalContext";
 export default function ManageInventories() {
-    const { products,setProducts } = useContext(GlobalContext)
+    const { products, setProducts } = useContext(GlobalContext)
+    const navigate = useNavigate()
     const tableHead = ['Products', 'Price', 'Quantity', 'Supplier', 'Status', '']
     const onDeleteHandler = async (id, title) => {
         const value = await swal({ title: `Do you want to delete ${title} ?` })
         if (value) {
             const { data } = await deleteItem(id)
-            console.log(data);
             if (data) {
                 toast.success(`${title} successfully deleted ?`)
-                const { data } = await getItems();
-                setProducts(data)
-            }else{
+                setProducts(prev => prev.filter(item => item._id !== id))
+            } else {
                 toast.error("Delete failed.")
             }
 
         }
 
-        // const { data } = await deleteItem(id)
 
 
     }
@@ -53,7 +53,7 @@ export default function ManageInventories() {
                                             <tr key={index}>
                                                 <Slide top big>
                                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                        <div className="flex items-center">
+                                                        <div className="flex items-center cursor-pointer" onClick={() => navigate(`/inventory/${_id}`)}>
                                                             <div className="flex-shrink-0">
                                                                 <img alt="profil" src={image} className="mx-auto object-cover rounded-full h-10 w-10 " />
 
@@ -100,8 +100,8 @@ export default function ManageInventories() {
                                                         </span>
                                                     </td>
                                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                        <button className="text-pink-600 hover:text-pink-900" onClick={() => onDeleteHandler(_id, title)}>
-                                                            Delete
+                                                        <button className="text-pink-600 text-xl hover:text-pink-900" onClick={() => onDeleteHandler(_id, title)}>
+                                                            <BsTrash />
                                                         </button>
                                                     </td>
                                                 </Slide>

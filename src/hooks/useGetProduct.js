@@ -4,7 +4,6 @@ import useSWR from 'swr'
 
 export default function useGetProduct() {
   const getProducts = (uri) => axios.get(uri).then(res => res.data);
-
   const { data, error } = useSWR(`${process.env.REACT_APP_uri}/items`, getProducts)
 
   return {
