@@ -50,7 +50,7 @@ export default function ManageInventories() {
                                     products?.map((item, index) => {
                                         const { _id, description, image, price, quantity, supplier, title } = item
                                         return (
-                                            <tr>
+                                            <tr key={index}>
                                                 <Slide top big>
                                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                         <div className="flex items-center">

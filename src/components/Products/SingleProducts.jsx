@@ -15,7 +15,6 @@ export default function SingleProducts({ id }) {
     const [productQuantity, setProductQuantity] = useState(quantity);
     useEffect(() => {
         setProductQuantity(quantity)
-        
     }, [quantity]);
 
     // const { data, error } = useSWR(
