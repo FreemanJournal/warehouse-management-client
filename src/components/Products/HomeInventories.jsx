@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalContext';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function Products() {
+export default function HomeInventories() {
     const { products } = useContext(GlobalContext);
     const navigate = useNavigate();
     return (
@@ -14,7 +14,7 @@ export default function Products() {
                 <div className="home-products grid grid-cols-1 md:grid-cols-3 w-full mt-24 gap-10">
                     {
                         products?.slice(0, 6)?.map((item, index) => {
-                            const { _id,description, image, price, quantity, supplier, title } = item
+                            const { _id, description, image, price, quantity, supplier, title } = item
                             return (
 
                                 <div key={index} className=" flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-white rounded-lg shadow-lg justify-self-center max-w-sm">
@@ -48,7 +48,7 @@ export default function Products() {
                                             </span>
                                         </div>
 
-                                        <button type="button" className="py-2 px-4  mt-5 bg-slate-600 hover:bg-slate-700 focus:ring-slate-500 focus:ring-offset-slate-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={()=>navigate(`/inventory/${_id}`)}>
+                                        <button type="button" className="py-2 px-4  mt-5 bg-slate-600 hover:bg-slate-700 focus:ring-slate-500 focus:ring-offset-slate-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={() => navigate(`/inventory/${_id}`)}>
                                             Update
                                         </button>
 
@@ -60,8 +60,11 @@ export default function Products() {
 
                 </div>
 
-
+                <button type="button" onClick={() => navigate('/manageInventory')} className="py-2 px-4 w-56  mt-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
+                    Manage Inventories
+                </button>
             </div>
+
         </section>
     )
 }
