@@ -17,11 +17,11 @@ export default function Navbar() {
 
   const menu = [
     { name: 'Home', href: '/', current: true },
-    { name: 'Manage Inventories', href: '/manageInventory', current: true },
-    { name: 'Add Items', href: '/newInventory', current: true },
-    { name: 'My Items', href: '/myItems', current: true },
+    { name: 'Manage Inventories', href: '/manageInventory', current: show },
+    { name: 'Add Items', href: '/newInventory', current: show },
+    { name: 'My Items', href: '/myItems', current: show },
     { name: 'Log In', href: '/logIn', current: !show},
-    { name: 'Register', href: '/registration', current: !show},
+    { name: 'Registration', href: '/registration', current: !show},
   ]
 
   return (

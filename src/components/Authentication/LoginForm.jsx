@@ -8,7 +8,7 @@ import useErrorMassageHandler from '../../hooks/useErrorMassageHandler';
 function LoginForm() {
   const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
 
-  const { signInWithGoogle,signInWithEmailAndPassword,setAuthenticationProvider } = useErrorMassageHandler()
+  const { signInWithGoogle, signInWithEmailAndPassword, setAuthenticationProvider } = useErrorMassageHandler()
 
   const navigate = useNavigate();
 
@@ -17,11 +17,11 @@ function LoginForm() {
 
   const onSubmitHandler = (value) => {
     const { email, password } = value;
-    signInWithEmailAndPassword({email,password})
-    .then(()=>{
-      setAuthenticationProvider('logIn')
-    })
-   
+    signInWithEmailAndPassword({ email, password })
+      .then(() => {
+        setAuthenticationProvider('logIn')
+      })
+
   }
   const googleSignInHandler = () => {
     setAuthenticationProvider('googleSignIn')
@@ -30,12 +30,12 @@ function LoginForm() {
 
   return (
     <>
-      <section className="bg-amber-300 m-3 pt-10 rounded-lg flex flex-col" >
-        <div className="px-6 py-8 pt-24">
+      <section className="bg-amber-300  m-3 rounded-lg flex flex-col pt-10">
+        <div className="px-6 py-8 pt-24 ">
           <div className="w-full md:w-6/12 mx-auto  rounded-md shadow-lg  bg-white ">
             <div className="flex items-center justify-between p-4 border-b border-white">
               <h4 className="text-lg text-slate-600 font-mont font-semibold">
-                Registration
+                Log In
               </h4>
             </div>
             <div className=" w-full flex-wrap flex flex-col md:flex-row justify-center items-center gap-5  space-y-2 p-4 mt-3 text-[15.5px] leading-relaxed text-gray-500">
@@ -43,7 +43,7 @@ function LoginForm() {
                 <form className="" onSubmit={handleSubmit(onSubmitHandler)}>
                   <div className="flex">
                     <div className="w-full flex flex-col gap-5">
-                    
+
 
                       <div>
                         <label htmlFor="email-address" className="sr-only">
@@ -75,7 +75,7 @@ function LoginForm() {
                           {...register("password", { required: true, minLength: 6 })}
                         />
                       </div>
-                  
+
 
                     </div>
 
