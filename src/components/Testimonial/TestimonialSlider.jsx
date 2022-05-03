@@ -48,7 +48,7 @@ export default function TestimonialSlider() {
                     slot="container-start"
                     className="parallax-bg bg-transparent"
                     style={{
-                        backgroundImage: 'url("/images/single-banner.jpg")',
+                        backgroundImage: 'url("https://i.ibb.co/Vv6pX71/single-banner.jpg")',
                     }}
                 // data-swiper-parallax="-23%"
                 ></div>

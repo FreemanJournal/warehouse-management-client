@@ -7,7 +7,7 @@ export default function HeroSection() {
       <div className="flex flex-col items-center justify-center  px-4 lg:px-8 py-24">
           <div className="h-96">
             <img
-              src="/images/vegetables.png"
+              src="https://i.ibb.co/QH6kn60/countdown.png"
               alt="Walnut card tray with white powder coated steel divider and 3 punch out holes."
               className="rounded-lg w-full h-full"
             />
