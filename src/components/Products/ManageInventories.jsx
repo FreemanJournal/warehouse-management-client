@@ -40,7 +40,7 @@ export default function ManageInventories({ products }) {
                                 <tr>
                                     {
                                         tableHead.map((item, index) => (
-                                            <th key={index} scope="col" className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                            <th key={index} scope="col" className={`${item === "Supplier" || item === "Status" ?"hidden md:table-cell":""} px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal`}>
                                                 {item}
                                             </th>
                                         ))
@@ -80,12 +80,12 @@ export default function ManageInventories({ products }) {
                                                     </td>
                                                 </Slide>
                                                 <Slide top big>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    <td className="hidden md:table-cell px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                         <p className="text-gray-900 whitespace-no-wrap">
                                                             {supplier}
                                                         </p>
                                                     </td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    <td className="hidden md:table-cell px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                         <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                                             {parseInt(quantity) === 0 ? <>
                                                                 <span aria-hidden="true" className="absolute inset-0 bg-pink-600  rounded-full">
@@ -120,7 +120,7 @@ export default function ManageInventories({ products }) {
 
 
                       {/* there goes pagination */}
-                      
+
                     </div>
 
                 </div>
