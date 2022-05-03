@@ -17,7 +17,7 @@ function Registration() {
 
   const onSubmitHandler = (value) => {
     if (value.password !== value.confirmPassword) {
-      toast.error("Password and Confirm Password does not match !",{toastId:passToast})
+      toast.error("Password and Confirm Password does not match !", { toastId: passToast })
       return;
     }
 
@@ -29,7 +29,7 @@ function Registration() {
         await updateProfile({ displayName });
         setAuthenticationProvider('verification')
         await sendEmailVerification();
-        toast.success(`A verification email has been sent to ${email}`,{toastId:verificationToast})
+        toast.success(`A verification email has been sent to ${email}`, { toastId: verificationToast })
       })
   }
   const googleSignInHandler = () => {
@@ -135,10 +135,10 @@ function Registration() {
               </div>
               <div className="flex relative  justify-center items-center pb-10 md:pb-0">
                 <button onClick={googleSignInHandler}
-                  className=" mx-auto flex gap-1 justify-center font-semibold border border-zinc-400 py-2 px-10 shadow-md rounded-md  text-emerald-600 hover:text-emerald-500" >
+                  className="mx-auto flex gap-1 justify-center font-semibold  py-2 px-10 shadow-md rounded-md  text-slate-600 hover:text-pink-600 border hover:border-pink-500" >
                   <FcGoogle className='font-bold text-2xl' /><span>Continue with google</span>
                 </button>
-                <p className='absolute -bottom-1 md:-bottom-28  cursor-pointer hover:underline hover:text-indigo-500' onClick={() => navigate("/login")}>Already have an account ?</p>
+                <p className='absolute -bottom-1 md:-bottom-28  cursor-pointer hover:underline hover:text-pink-500' onClick={() => navigate("/login")}>Already have an account ?</p>
 
               </div>
             </div>
