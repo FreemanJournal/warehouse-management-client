@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="container relative">
       <Routing />
-      <ToastContainer />
+      <ToastContainer/>
     </div>
   );
 }

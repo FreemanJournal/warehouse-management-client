@@ -68,10 +68,8 @@ export default function TestimonialSlider() {
                                         </div>
                                     </div>
                                 </div>
-
                             </SwiperSlide>
                         )
-
                     })
                 }
             </Swiper>

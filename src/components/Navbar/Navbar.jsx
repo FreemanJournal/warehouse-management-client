@@ -21,12 +21,12 @@ export default function Navbar() {
     { name: 'Add Items', href: '/newInventory', current: true },
     { name: 'My Items', href: '/myItems', current: true },
     { name: 'Log In', href: '/logIn', current: !show },
-    { name: 'Register', href: '/register', current: !show },
+    { name: 'Register', href: '/registration', current: !show },
     // { name: 'Log Out', href: '/logIn', current: !show },
   ]
 
   return (
-    <section className="absolute inset-0 top-3">
+    <section className="absolute inset-0 top-3 z-10">
       <Disclosure as="nav" className="bg-transparent">
         {({ open }) => (
           <>

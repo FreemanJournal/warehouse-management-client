@@ -3,16 +3,14 @@ import { Slide } from 'react-reveal';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
-import { getItems, updateItemQtn } from '../../api/api';
+import { updateItemQtn } from '../../api/api';
 import { GlobalContext } from '../../context/GlobalContext';
-import useGetProduct from '../../hooks/useGetProduct';
 import "./sweetAlert.css";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function SingleProducts({ id }) {
-    const { products, setProducts } = useContext(GlobalContext);
-    const { mutate } = useGetProduct()
+    const { products, setProducts,mutate } = useContext(GlobalContext);
 
     let productDetails = products?.find(item => item._id === id) || {}
     const { _id, productId, description, image, price, quantity, supplier, title } = productDetails

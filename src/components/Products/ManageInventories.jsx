@@ -9,7 +9,8 @@ import { GlobalContext } from "../../context/GlobalContext";
 export default function ManageInventories() {
     const { products, setProducts } = useContext(GlobalContext)
     const navigate = useNavigate()
-    const tableHead = ['Products', 'Price', 'Quantity', 'Supplier', 'Status', '']
+    const tableHead = ['Products', 'Price', 'Quantity', 'Supplier', 'Status', ''];
+
     const onDeleteHandler = async (id, title) => {
         const value = await swal({ title: `Do you want to delete ${title} ?` })
         if (value) {

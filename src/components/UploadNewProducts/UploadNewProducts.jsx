@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import FileBase64 from 'react-file-base64';
 import { useForm } from 'react-hook-form';
 import { Slide } from 'react-reveal';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
-import { createItem } from '../../api/apiHandler';
-import useGetProduct from '../../hooks/useGetProduct';
+import { createItem } from '../../api/api';
+import { GlobalContext } from '../../context/GlobalContext';
 function UploadNewProducts() {
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
-    const { mutate } = useGetProduct()
-    const navigate = useNavigate()
-    const [imgFile, setImgFile] = useState()
+    const { mutate } = useContext(GlobalContext);
+    const navigate = useNavigate();
+    const [imgFile, setImgFile] = useState();
+    
     const customId = "custom-id-yes";
     const imageToast = "custom-id-no";
 
