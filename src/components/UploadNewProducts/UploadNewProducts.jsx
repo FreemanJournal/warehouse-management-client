@@ -12,7 +12,7 @@ function UploadNewProducts() {
     const { mutate } = useContext(GlobalContext);
     const navigate = useNavigate();
     const [imgFile, setImgFile] = useState();
-    
+
     const customId = "custom-id-yes";
     const imageToast = "custom-id-no";
 
@@ -37,9 +37,9 @@ function UploadNewProducts() {
 
     return (
         <>
-            <section className="bg-amber-300 m-3 pt-10 rounded-lg flex flex-col" >
+            <section className="bg-amber-300 m-3 pt-10 rounded-lg flex flex-col relative" >
                 <div className="px-6 py-8 pt-24">
-                    <div className=" w-8/12 mx-auto  rounded-md shadow-lg  bg-white ">
+                    <div className=" md:w-8/12 mx-auto  rounded-md shadow-lg  bg-white ">
                         <div className="flex items-center justify-between p-4 border-b border-white">
                             <h4 className="text-lg text-slate-600 font-mont font-semibold">
                                 Add new product
@@ -48,8 +48,8 @@ function UploadNewProducts() {
                         <div className="space-y-2 p-4 mt-3 text-[15.5px] leading-relaxed text-gray-500">
                             <form className="" onSubmit={handleSubmit(onCreateProductHandler)}>
                                 <input type="hidden" name="remember" defaultValue="true" />
-                                <div className="flex  gap-5">
-                                    <div className="w-1/2 flex flex-col gap-5">
+                                <div className="flex flex-col md:flex-row  gap-5">
+                                    <div className="md:w-1/2 flex flex-col gap-5">
                                         <div className='border rounded-md'>
                                             <label htmlFor="title" className="sr-only">
                                                 Title
@@ -93,7 +93,7 @@ function UploadNewProducts() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="w-1/2 flex flex-col gap-5">
+                                    <div className="md:w-1/2 flex flex-col gap-5">
                                         <div className='border rounded-md'>
                                             <label htmlFor="quantity" className="sr-only">
                                                 quantity
@@ -170,11 +170,13 @@ function UploadNewProducts() {
 
                     </div>
                 </div>
-                <Slide bottom>
-                    <button type="button" onClick={() => navigate('/manageInventory')} className="py-2 px-4 w-56 mx-auto  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
-                        Manage Inventories
-                    </button>
-                </Slide>
+                <div className="mx-auto relative">
+                    <Slide bottom>
+                        <button type="button" onClick={() => navigate('/manageInventory')} className=" py-2 px-4  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
+                            Manage Inventories
+                        </button>
+                    </Slide>
+                </div>
 
             </section>
 

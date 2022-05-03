@@ -16,10 +16,10 @@ export default function NewInventoryPage() {
         return <Loader isLoading={isLoading} />
     }
     return (
-        <>
+        <div className='relative'>
             <Navbar />
             <UploadNewProducts />
             <Footer />
-        </>
+        </div>
     )
 }
