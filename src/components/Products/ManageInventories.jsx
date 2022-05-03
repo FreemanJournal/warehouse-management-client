@@ -34,7 +34,7 @@ export default function ManageInventories({ products }) {
                 <div className="px-4 lg:px-8 py-24 rounded-lg">
                     <div className="rounded-lg overflow-hidden">
                         {userInventories?.length === 0 ? <div className="flex"><button type="button" onClick={() => navigate('/newInventory')} className="py-2 px-4 w-56 mx-auto  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md  rounded-lg ">
-                           Add a new product
+                           Add a new item
                         </button></div> : <table className="leading-normal w-full">
                             <thead>
                                 <tr>

@@ -21,25 +21,25 @@ export default function useErrorMassageHandler() {
             case 'Firebase: Error (auth/popup-closed-by-user).':
                 break;
             case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
-                toast.error('Password should be at least 6 characters long.')
+                toast.error('Password should be at least 6 characters long.',{toastId:errorMessage})
                 break;
             case 'Firebase: Error (auth/email-already-in-use).':
-                toast.error('This email is used once.')
+                toast.error('This email is used once.',{toastId:errorMessage})
                 break;
             case 'No user is logged in':
-                toast.error('This email is used once.')
+                toast.error('This email is used once.',{toastId:errorMessage})
                 break;
             case 'Firebase: Error (auth/wrong-password).':
-                toast.error('Oops,looks like password is incorrect.')
+                toast.error('Oops,looks like password is incorrect.',{toastId:errorMessage})
                 break;
             case 'Firebase: Error (auth/user-not-found).':
-                toast.error('Please give valid account info.')
+                toast.error('Please give valid account info.',{toastId:errorMessage})
                 break;
             case 'Firebase: Error (auth/operation-not-allowed)':
-                toast.error('Please consider another signIn/signUp option.')
+                toast.error('Please consider another signIn/signUp option.',{toastId:errorMessage})
                 break;
             default:
-                toast.error(errorMessage)
+                toast.error(errorMessage,{toastId:errorMessage})
                 break;
         }
     }

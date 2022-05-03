@@ -1,26 +1,18 @@
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { v4 as uuidv4 } from 'uuid';
 import useErrorMassageHandler from '../../hooks/useErrorMassageHandler';
 
 function LoginForm() {
   const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
-
   const { signInWithGoogle, signInWithEmailAndPassword, setAuthenticationProvider } = useErrorMassageHandler()
+  const navigate = useNavigate()
 
-  const navigate = useNavigate();
-
-  // const loginTost = "Hello";
-  // const passToast = "mom";
 
   const onSubmitHandler = (value) => {
     const { email, password } = value;
-    signInWithEmailAndPassword({ email, password })
-      .then(() => {
-        setAuthenticationProvider('logIn')
-      })
+    setAuthenticationProvider('logIn')
+    signInWithEmailAndPassword(email, password)
 
   }
   const googleSignInHandler = () => {
@@ -35,7 +27,7 @@ function LoginForm() {
           <div className="w-full md:w-6/12 mx-auto  rounded-md shadow-lg  bg-white ">
             <div className="flex items-center justify-between p-4 border-b border-white">
               <h4 className="text-lg text-slate-600 font-mont font-semibold">
-                Log In
+                Welcome back
               </h4>
             </div>
             <div className=" w-full flex-wrap flex flex-col md:flex-row justify-center items-center gap-5  space-y-2 p-4 mt-3 text-[15.5px] leading-relaxed text-gray-500">
@@ -82,7 +74,7 @@ function LoginForm() {
                   </div>
                   <div className="flex items-center justify-end gap-3 p-4 mt-5 border-t border-white relative">
                     <button type='submit' className="px-6 py-2 text-white bg-indigo-500 rounded-md outline-none upload_btn"
-                      onClick={() => setValue('productId', uuidv4())}>
+                    >
                       Log In
                     </button>
                   </div>
@@ -95,11 +87,12 @@ function LoginForm() {
                 </p>
                 <hr className='w-32 md:w-0 md:h-32  border border-b-0  border-r-0 border-zinc-300' />
               </div>
-              <div className="flex justify-center items-center pb-10 md:pb-0">
+              <div className="flex flex-col relative justify-center items-center pb-10 md:pb-0">
                 <button onClick={googleSignInHandler}
                   className=" mx-auto flex gap-1 justify-center font-semibold border border-zinc-400 py-2 px-10 shadow-md rounded-md  text-emerald-600 hover:text-emerald-500" >
                   <FcGoogle className='font-bold text-2xl' /><span>Continue with google</span>
                 </button>
+                <p className='absolute -bottom-1 md:-bottom-28 cursor-pointer hover:underline hover:text-indigo-500' onClick={() => navigate("/registration")}>Need an account ?</p>
               </div>
             </div>
 

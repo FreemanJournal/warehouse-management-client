@@ -133,11 +133,13 @@ function Registration() {
                 </p>
                 <hr className='w-32 md:w-0 md:h-32  border border-b-0  border-r-0 border-zinc-300' />
               </div>
-              <div className="flex justify-center items-center pb-10 md:pb-0">
+              <div className="flex relative  justify-center items-center pb-10 md:pb-0">
                 <button onClick={googleSignInHandler}
                   className=" mx-auto flex gap-1 justify-center font-semibold border border-zinc-400 py-2 px-10 shadow-md rounded-md  text-emerald-600 hover:text-emerald-500" >
                   <FcGoogle className='font-bold text-2xl' /><span>Continue with google</span>
                 </button>
+                <p className='absolute -bottom-1 md:-bottom-28  cursor-pointer hover:underline hover:text-indigo-500' onClick={() => navigate("/login")}>Already have an account ?</p>
+
               </div>
             </div>
 

@@ -64,7 +64,8 @@ function UploadNewProducts() {
                                                 name="title"
                                                 type="text"
                                                 autoComplete="title"
-                                                className="appearance-none rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                required
+                                                className="appearance-none rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm border "
                                                 placeholder="Write product name..."
                                                 {...register("title", { required: true, maxLength: 100 })}
                                             />
@@ -78,7 +79,8 @@ function UploadNewProducts() {
                                                 id="description"
                                                 name="description"
                                                 type="textarea"
-                                                className="appearance-none  rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                required
+                                                className="appearance-none  rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 border focus:z-10 sm:text-sm"
                                                 placeholder="Write your product description..."
                                                 {...register("description", { required: true, maxLength: 20000 })}
                                             />
@@ -92,7 +94,8 @@ function UploadNewProducts() {
                                                 name="price"
                                                 type="number"
                                                 autoComplete="price"
-                                                className="appearance-none  rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                required
+                                                className="appearance-none border  rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
                                                 placeholder="Enter product price..."
                                                 {...register("price", { required: true, maxLength: 10 })}
                                             />
@@ -108,7 +111,8 @@ function UploadNewProducts() {
                                                 name="quantity"
                                                 type="number"
                                                 autoComplete="quantity"
-                                                className="appearance-none rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                required
+                                                className="appearance-none border rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
                                                 placeholder="Enter product quantity..."
                                                 {...register("quantity", { required: true, maxLength: 10 })}
                                             />
@@ -122,7 +126,8 @@ function UploadNewProducts() {
                                                 name="supplier"
                                                 type="text"
                                                 autoComplete="supplier"
-                                                className="appearance-none rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                required
+                                                className="appearance-none border rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
                                                 placeholder="Enter supplier name..."
                                                 {...register("supplier", { required: true, maxLength: 100 })}
                                             />
