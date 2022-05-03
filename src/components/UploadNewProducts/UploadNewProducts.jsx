@@ -7,10 +7,15 @@ import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { createItem } from '../../api/api';
 import { GlobalContext } from '../../context/GlobalContext';
+
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../utilities/firebase.init';
 function UploadNewProducts() {
-    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
-    const { mutate } = useContext(GlobalContext);
     const navigate = useNavigate();
+    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
+    const [user] = useAuthState(auth)
+
+    const { mutate } = useContext(GlobalContext);
     const [imgFile, setImgFile] = useState();
 
     const customId = "custom-id-yes";
@@ -159,7 +164,10 @@ function UploadNewProducts() {
                                 </div>
                                 <div className="flex items-center justify-end gap-3 p-4 mt-5 border-t border-white relative">
                                     <button type='submit' className="px-6 py-2 text-white bg-blue-400 rounded-md outline-none upload_btn"
-                                        onClick={() => setValue('productId', uuidv4())}
+                                        onClick={() => {
+                                            setValue('productId', uuidv4())
+                                            setValue('userEmail',user?.email)
+                                        }}
                                     >
                                         Create new product
                                     </button>

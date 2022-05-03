@@ -19,7 +19,7 @@ export default function Navbar() {
     { name: 'Home', href: '/', current: true },
     { name: 'Manage Inventories', href: '/manageInventory', current: show },
     { name: 'Add Items', href: '/newInventory', current: show },
-    { name: 'My Items', href: '/myItems', current: show },
+    { name: 'My Items', href: '/userProduct', current: show },
     { name: 'Log In', href: '/logIn', current: !show},
     { name: 'Registration', href: '/registration', current: !show},
   ]

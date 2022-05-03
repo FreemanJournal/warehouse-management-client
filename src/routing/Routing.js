@@ -7,15 +7,18 @@ import LoginPage from '../pages/LoginPage'
 import NewInventoryPage from '../pages/NewInventoryPage'
 import NotFound from '../pages/NotFound'
 import RegistrationPage from '../pages/RegistrationPage'
+import UserProductPage from '../pages/UserProductPage'
+import PrivateRoute from './PrivateRoute'
 
 export default function Routing() {
   return (
     <>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/newInventory' element={<NewInventoryPage />} />
-        <Route path='/manageInventory' element={<InventoriesPage />} />
-        <Route path='/inventory/:id' element={<InventoryDetailsPage />} />
+        <Route path='/newInventory' element={<PrivateRoute><NewInventoryPage /></PrivateRoute>} />
+        <Route path='/manageInventory' element={<PrivateRoute><InventoriesPage /></PrivateRoute>} />
+        <Route path='/inventory/:id' element={<PrivateRoute><InventoryDetailsPage /></PrivateRoute>} />
+        <Route path='/userProduct' element={<PrivateRoute><UserProductPage /></PrivateRoute>} />
         <Route path='/registration' element={<RegistrationPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/*' element={<NotFound />} />

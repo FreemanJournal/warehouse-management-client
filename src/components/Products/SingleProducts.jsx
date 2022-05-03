@@ -7,11 +7,10 @@ import { updateItemQtn } from '../../api/api';
 import { GlobalContext } from '../../context/GlobalContext';
 import "./sweetAlert.css";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+
 
 export default function SingleProducts({ id }) {
-    const { products, setProducts,mutate } = useContext(GlobalContext);
-
+    const { products, setProducts,isError } = useContext(GlobalContext);
     let productDetails = products?.find(item => item._id === id) || {}
     const { _id, productId, description, image, price, quantity, supplier, title } = productDetails
     const [productQuantity, setProductQuantity] = useState(quantity);
@@ -21,23 +20,24 @@ export default function SingleProducts({ id }) {
         setProductQuantity(quantity)
     }, [quantity]);
 
+    
+
 
     const deliveredHandler = async (qtn) => {
        
         if (parseInt(qtn) >= 0) {
             try {
                 const { data: updateData } = await updateItemQtn({ productQuantity: qtn, productId });
+              
                 if (updateData) {
+                    setProductQuantity(qtn)
                     toast.success(`${title} quantity updated!`, { toastId: 1 })
-                    mutate()
                 } else {
+                    toast.error(`${title} quantity update failed!`, { toastId: 2 })
                     return;
                 }
-                // const { data } = await getItems();
-                // setProducts(data)
-               
-
             } catch (error) {
+                console.log('error',error);
                 toast.error(`${title} quantity failed to update!`, { toastId: 2 })
             }
         }
@@ -83,7 +83,7 @@ export default function SingleProducts({ id }) {
         <section className="bg-amber-300 m-3 pt-10  rounded-lg flex flex-col" >
             <div className="  px-6 py-8 lg:flex-shrink-1 lg:p-12">
                 <div className="mt-8 flex flex-col md:flex-row gap-5 overflow-hidden">
-                    <div class="text-center w-full flex ">
+                    <div className="text-center w-full flex ">
                         <Slide left>
                             <img src={image} alt="" className='mx-auto rounded-2xl' />
 

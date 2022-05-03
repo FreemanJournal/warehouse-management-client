@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BsTrash } from "react-icons/bs";
 import { Slide } from 'react-reveal';
 import { useNavigate } from 'react-router-dom';
@@ -6,8 +6,12 @@ import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 import { deleteItem } from '../../api/api';
 import { GlobalContext } from "../../context/GlobalContext";
-export default function ManageInventories() {
-    const { products, setProducts } = useContext(GlobalContext)
+export default function ManageInventories({ products }) {
+    // const { products, setProducts } = useContext(GlobalContext)
+    const [userInventories, setUserInventories] = useState(products);
+
+    useEffect(() => setUserInventories(products), [products])
+
     const navigate = useNavigate()
     const tableHead = ['Products', 'Price', 'Quantity', 'Supplier', 'Status', ''];
 
@@ -17,7 +21,7 @@ export default function ManageInventories() {
             const { data } = await deleteItem(id)
             if (data) {
                 toast.success(`${title} successfully deleted ?`)
-                setProducts(prev => prev.filter(item => item._id !== id))
+                setUserInventories(prev => prev.filter(item => item._id !== id))
             } else {
                 toast.error("Delete failed.")
             }
@@ -26,10 +30,12 @@ export default function ManageInventories() {
     return (
 
         <>
-            <section className="bg-amber-300 m-3 pt-10  rounded-lg" >
+            <section className="bg-amber-300 m-3 pt-10  rounded-lg min-h-screen" >
                 <div className="px-4 lg:px-8 py-24 rounded-lg">
                     <div className="rounded-lg overflow-hidden">
-                        <table className="leading-normal w-full">
+                        {userInventories?.length === 0 ? <div className="flex"><button type="button" onClick={() => navigate('/newInventory')} className="py-2 px-4 w-56 mx-auto  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md  rounded-lg ">
+                           Add a new product
+                        </button></div> : <table className="leading-normal w-full">
                             <thead>
                                 <tr>
                                     {
@@ -44,7 +50,7 @@ export default function ManageInventories() {
                             </thead>
                             <tbody>
                                 {
-                                    products?.map((item, index) => {
+                                    userInventories?.map((item, index) => {
                                         const { _id, description, image, price, quantity, supplier, title } = item
                                         return (
                                             <tr key={index}>
@@ -110,7 +116,9 @@ export default function ManageInventories() {
                                 }
 
                             </tbody>
-                        </table>
+                        </table>}
+
+
                         {/* <div className=" px-5 bg-white py-5 flex flex-col xs:flex-row items-center xs:justify-between">
                             <div className="flex items-center">
                                 <button type="button" className="w-full p-4 border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100">
