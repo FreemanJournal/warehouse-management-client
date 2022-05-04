@@ -1,30 +1,12 @@
-import axios from 'axios';
-import { useContext, useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
-import { GlobalContext } from '../../context/GlobalContext';
 import useErrorMassageHandler from '../../hooks/useErrorMassageHandler';
-import auth from '../../utilities/firebase.init';
 
 function LoginForm() {
-  const [user, loading, error] = useAuthState(auth)
-  const { createToken } = useContext(GlobalContext)
   const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
   const { signInWithGoogle, googleUser, signInWithEmailAndPassword, setAuthenticationProvider } = useErrorMassageHandler()
   const navigate = useNavigate()
-
-
-
-  useEffect(() => {
-    if (user) {
-      createToken(user?.email)
-    }
-  }, [user])
-
-
-
 
 
   const onSubmitHandler = (value) => {

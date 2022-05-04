@@ -34,12 +34,18 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
-  
+    useEffect(() => {
+        if (user) {
+            createToken(user?.email)
+        }
+    }, [user])
+
+
     useEffect(() => {
         setProducts(data)
     }, [data, user])
 
-    return (<GlobalContext.Provider value={{ products, userProducts,getMyProducts, setProducts, mutate, createToken, isLoading: !data && !error, isError: error }}>
+    return (<GlobalContext.Provider value={{ products, userProducts, getMyProducts, setProducts, mutate, createToken, isLoading: !data && !error, isError: error }}>
         {children}
     </GlobalContext.Provider>)
 }
