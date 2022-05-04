@@ -9,12 +9,8 @@ export default function useErrorMassageHandler() {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [createUserWithEmailAndPassword, createUser, createLoading, createError] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, errorUpdating] = useUpdateProfile(auth);
-    const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(auth);
     const [signInWithEmailAndPassword, user, loading, loginError] = useSignInWithEmailAndPassword(auth);
-
-    if (sending) {
-        console.log('sending', sending);
-    }
+    const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(auth);
 
 
     const errorMessageHandler = (er) => {

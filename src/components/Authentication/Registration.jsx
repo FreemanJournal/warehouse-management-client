@@ -1,42 +1,37 @@
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import useErrorMassageHandler from '../../hooks/useErrorMassageHandler';
-import auth from '../../utilities/firebase.init';
 
 function Registration() {
   const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
-  const { signInWithGoogle, createUserWithEmailAndPassword, sending, updateProfile, sendEmailVerification, setAuthenticationProvider } = useErrorMassageHandler()
+  const { signInWithGoogle, createUserWithEmailAndPassword,sendEmailVerification, updateProfile, setAuthenticationProvider } = useErrorMassageHandler()
   const navigate = useNavigate();
-  // const [user] = useAuthState(auth)
-
-
-  const [user, loading] = useAuthState(auth)
-  // const {createToken} = useContext(GlobalContext)
-
-  // useEffect(()=>{createToken(user)},[user])
-
 
 
   const onSubmitHandler = (value) => {
-    if (value.password !== value.confirmPassword) {
-      toast.error("Password and Confirm Password does not match !", { toastId: "Hello" })
-      return;
-    }
+    try {
+      if (value.password !== value.confirmPassword) {
+        toast.error("Password and Confirm Password does not match !", { toastId: "Hello" })
+        return;
+      }
 
-    const { displayName, email, password } = value;
-    setAuthenticationProvider('register')
-    createUserWithEmailAndPassword(email, password)
-      .then(async () => {
-        setAuthenticationProvider('updating')
-        await updateProfile({ displayName });
-        setAuthenticationProvider('verification')
-        await sendEmailVerification()
-      
-      })
+      const { displayName, email, password } = value;
+      setAuthenticationProvider('register')
+      createUserWithEmailAndPassword(email, password)
+        .then(async () => {
+          setAuthenticationProvider('updating')
+          await updateProfile({ displayName });
+          setAuthenticationProvider('verification')
+          await sendEmailVerification()
+
+        })
+
+    } catch (error) {
+
+    }
   }
   const googleSignInHandler = () => {
     setAuthenticationProvider('googleSignIn')

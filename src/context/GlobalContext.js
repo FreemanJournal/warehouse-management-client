@@ -17,7 +17,6 @@ export const GlobalProvider = ({ children }) => {
     const [userProducts, setUserProducts] = useState();
 
     const createToken = async (email) => {
-        console.log('createTokenEmail', email);
         const { data } = await axios.post(`${process.env.REACT_APP_uri}/createToken`, { email: email })
         localStorage.setItem('authAccessToken', data.authAccessToken)
     }

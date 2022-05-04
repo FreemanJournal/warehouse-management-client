@@ -17,6 +17,7 @@ export default function Navbar() {
 
   const menu = [
     { name: 'Home', href: '/', current: true },
+    { name: 'Blog', href: '/blog', current: true },
     { name: 'Manage Inventories', href: '/manageInventory', current: show },
     { name: 'Add Items', href: '/newInventory', current: show },
     { name: 'My Items', href: '/userProduct', current: show },

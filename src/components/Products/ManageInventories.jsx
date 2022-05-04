@@ -62,7 +62,7 @@ export default function ManageInventories({ products }) {
 
                                                             </div>
                                                             <div className="ml-3">
-                                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                                <p className="text-gray-900 whitespace-no-wrap capitalize">
                                                                     {title}
                                                                 </p>
                                                             </div>
@@ -103,7 +103,7 @@ export default function ManageInventories({ products }) {
                                                         </span>
                                                     </td>
                                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                        <button className="text-pink-600 text-xl hover:text-pink-900" onClick={() => onDeleteHandler(_id, title)}>
+                                                        <button title={`Delete ${title}`} className="text-pink-600 text-xl hover:text-pink-900" onClick={() => onDeleteHandler(_id, title)}>
                                                             <BsTrash />
                                                         </button>
                                                     </td>

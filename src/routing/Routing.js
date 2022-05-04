@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import BlogPage from '../pages/BlogPage'
 import Home from '../pages/Home'
 import InventoriesPage from '../pages/InventoriesPage'
 import InventoryDetailsPage from '../pages/InventoryDetailsPage'
@@ -15,6 +16,7 @@ export default function Routing() {
     <>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/blog' element={<BlogPage />} />
         <Route path='/newInventory' element={<PrivateRoute><NewInventoryPage /></PrivateRoute>} />
         <Route path='/manageInventory' element={<PrivateRoute><InventoriesPage /></PrivateRoute>} />
         <Route path='/inventory/:id' element={<PrivateRoute><InventoryDetailsPage /></PrivateRoute>} />
