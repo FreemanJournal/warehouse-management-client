@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useContext, useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -12,9 +13,11 @@ export default function RegistrationPage() {
   const [user, loading, error] = useAuthState(auth);
 
   // Redirect
-  const location = useLocation()
+  const location = useLocation();
   let navigate = useNavigate();
+
   useEffect(() => {
+    // createToken(user)
     let from = location.state?.from?.pathname || "/";
     user && navigate(from, { replace: true })
   }, [user])

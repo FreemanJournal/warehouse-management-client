@@ -11,7 +11,7 @@ export default function NewInventoryPage() {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    console.log('isLoading', isLoading);
+    
     if (isLoading) {
         return <Loader isLoading={isLoading} />
     }

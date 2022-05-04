@@ -8,16 +8,19 @@ import auth from '../utilities/firebase.init'
 import Loader from '../utilities/Loader'
 
 export default function UserProductPage() {
-  const { userProducts, isLoading } = useContext(GlobalContext)
- 
+  const { userProducts, isLoading, getMyProducts } = useContext(GlobalContext)
+  const [user, loading, error] = useAuthState(auth);
+
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+    getMyProducts(user?.email)
+  }, [user])
+
 
   if (isLoading) {
     return <Loader isLoading={isLoading} />
   }
-  
+
   return (
     <div className=''>
       <Navbar />

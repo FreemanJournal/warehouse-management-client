@@ -12,10 +12,8 @@ export default function useErrorMassageHandler() {
     const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(auth);
     const [signInWithEmailAndPassword, user, loading, loginError] = useSignInWithEmailAndPassword(auth);
 
-    // const {signInWithGoogle,createUserWithEmailAndPassword,updateProfile,sendEmailVerification,signInWithEmailAndPassword,setAuthenticationProvider}
 
     const errorMessageHandler = (er) => {
-
         const errorMessage = er?.message
         switch (errorMessage) {
             case 'Firebase: Error (auth/popup-closed-by-user).':
@@ -68,6 +66,6 @@ export default function useErrorMassageHandler() {
 
 
 
-    return { signInWithGoogle, createUserWithEmailAndPassword, updateProfile, sendEmailVerification, signInWithEmailAndPassword, setAuthenticationProvider };
+    return { signInWithGoogle,googleUser, createUserWithEmailAndPassword, updateProfile, sendEmailVerification, signInWithEmailAndPassword, setAuthenticationProvider };
 
 }

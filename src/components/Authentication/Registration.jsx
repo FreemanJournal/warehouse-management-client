@@ -1,17 +1,23 @@
+import { useContext, useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
+import { GlobalContext } from '../../context/GlobalContext';
 import useErrorMassageHandler from '../../hooks/useErrorMassageHandler';
+import auth from '../../utilities/firebase.init';
 
 function Registration() {
   const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
-
   const { signInWithGoogle, createUserWithEmailAndPassword, updateProfile, sendEmailVerification, setAuthenticationProvider } = useErrorMassageHandler()
-
   const navigate = useNavigate();
+  
+  // const [user,loading] = useAuthState(auth)
+  // const {createToken} = useContext(GlobalContext)
 
+  // useEffect(()=>{createToken(user)},[user])
 
 
 

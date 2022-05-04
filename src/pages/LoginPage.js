@@ -10,6 +10,8 @@ import Loader from '../utilities/Loader'
 
 export default function LoginPage() {
   const [user, loading, error] = useAuthState(auth);
+  const { isLoading } = useContext(GlobalContext)
+
 
   // Redirect
   const location = useLocation()
@@ -19,11 +21,11 @@ export default function LoginPage() {
     user && navigate(from, { replace: true })
   }, [user])
 
-  const { isLoading } = useContext(GlobalContext)
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
   if (isLoading) {
     return <Loader isLoading={isLoading} />
   }

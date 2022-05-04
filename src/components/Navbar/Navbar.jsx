@@ -62,7 +62,10 @@ export default function Navbar() {
                       {/* Log Out */}
                       {user && <button
                         className='bg-transparent uppercase font-mont  cursor-pointer text-slate-500  hover:text-slate-800 px-3 py-2 rounded-md text-base font-medium'
-                        onClick={() => signOut(auth)}
+                        onClick={() => {
+                          localStorage.removeItem('authAccessToken')
+                          signOut(auth)
+                        }}
                       >
                         Logout
                       </button>}
@@ -91,7 +94,10 @@ export default function Navbar() {
                 {/* Log Out */}
                 {user && <button
                   className='bg-slate-700 mx-auto cursor-pointer uppercase font-mont text-white  hover:bg-slate-600 px-3 py-2 w-11/12 first:rounded-t-md last:rounded-b-md  text-base font-medium text-center'
-                  onClick={() => signOut(auth)}
+                  onClick={() => {
+                    localStorage.removeItem('authAccessToken')
+                    signOut(auth)
+                  }}
                 >
                   Logout
                 </button>}
