@@ -3,6 +3,7 @@ import { Slide } from 'react-reveal';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
+import { useSWRConfig } from 'swr';
 import { updateItemQtn } from '../../api/api';
 import { GlobalContext } from '../../context/GlobalContext';
 import "./sweetAlert.css";
@@ -10,12 +11,12 @@ import "./sweetAlert.css";
 
 
 export default function SingleProducts({ id }) {
-    const { products, setProducts,isError } = useContext(GlobalContext);
+    const { products,setProducts,isError } = useContext(GlobalContext);
     let productDetails = products?.find(item => item._id === id) || {}
     const { _id, productId, description, image, price, quantity, supplier, title } = productDetails
     const [productQuantity, setProductQuantity] = useState(quantity);
     const navigate = useNavigate();
-
+  
     useEffect(() => {
         setProductQuantity(quantity)
     }, [quantity]);
@@ -37,7 +38,6 @@ export default function SingleProducts({ id }) {
                     return;
                 }
             } catch (error) {
-                console.log('error',error);
                 toast.error(`${title} quantity failed to update!`, { toastId: 2 })
             }
         }
@@ -62,6 +62,7 @@ export default function SingleProducts({ id }) {
             })
             if (parseInt(quantity) >= 0) {
                 deliveredHandler(quantity)
+               
                 swal.stopLoading();
                 swal.close();
             } else {

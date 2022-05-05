@@ -38,7 +38,7 @@ export default function HomeInventories() {
                                             </picture>
                                         </div>
                                         <div className="relative text-slate-800 px-6 pb-6 mt-6">
-                                            <span className="bg-white text-slate-500 text-xs font-bold  py-2 leading-none flex items-center">
+                                            <span className="bg-white text-slate-500 text-2xl font-bold  py-2 leading-none flex items-center">
                                                 ${price}
                                             </span>
                                             <div className="flex justify-between">

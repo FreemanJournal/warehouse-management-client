@@ -65,43 +65,11 @@ function UploadNewProducts() {
                                                 type="text"
                                                 autoComplete="title"
                                                 required
-                                                className="appearance-none rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm border "
-                                                placeholder="Write product name..."
+                                                className="appearance-none rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm "
+                                                placeholder="PRODUCT NAME"
                                                 {...register("title", { required: true, maxLength: 100 })}
                                             />
                                         </div>
-
-                                        <div className='border rounded-sm'>
-                                            <label htmlFor="description" className="sr-only">
-                                                Product Description
-                                            </label>
-                                            <textarea
-                                                id="description"
-                                                name="description"
-                                                type="textarea"
-                                                required
-                                                className="appearance-none  rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 border focus:z-10 sm:text-sm"
-                                                placeholder="Write your product description..."
-                                                {...register("description", { required: true, maxLength: 20000 })}
-                                            />
-                                        </div>
-                                        <div className='border rounded-sm'>
-                                            <label htmlFor="price" className="sr-only">
-                                                Price
-                                            </label>
-                                            <input
-                                                id="price"
-                                                name="price"
-                                                type="number"
-                                                autoComplete="price"
-                                                required
-                                                className="appearance-none border  rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
-                                                placeholder="Enter product price..."
-                                                {...register("price", { required: true, maxLength: 10 })}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="sm:w-1/2 flex flex-col gap-5">
                                         <div className='border rounded-sm'>
                                             <label htmlFor="quantity" className="sr-only">
                                                 quantity
@@ -112,11 +80,31 @@ function UploadNewProducts() {
                                                 type="number"
                                                 autoComplete="quantity"
                                                 required
-                                                className="appearance-none border rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
-                                                placeholder="Enter product quantity..."
+                                                className="appearance-none  rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                placeholder="QUALITY"
                                                 {...register("quantity", { required: true, maxLength: 10 })}
                                             />
                                         </div>
+
+                                       
+                                        <div className='border rounded-sm'>
+                                            <label htmlFor="price" className="sr-only">
+                                                Price
+                                            </label>
+                                            <input
+                                                id="price"
+                                                name="price"
+                                                type="number"
+                                                autoComplete="price"
+                                                required
+                                                className="appearance-none   rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                placeholder="PRICE"
+                                                {...register("price", { required: true, maxLength: 10 })}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="sm:w-1/2 flex flex-col gap-5">
+                                        
                                         <div className='border rounded-sm'>
                                             <label htmlFor="supplier" className="sr-only">
                                                 supplier
@@ -127,19 +115,33 @@ function UploadNewProducts() {
                                                 type="text"
                                                 autoComplete="supplier"
                                                 required
-                                                className="appearance-none border rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
-                                                placeholder="Enter supplier name..."
+                                                className="appearance-none  rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                placeholder="SUPPLIER NAME"
                                                 {...register("supplier", { required: true, maxLength: 100 })}
                                             />
                                         </div>
+                                        <div className='border rounded-sm'>
+                                            <label htmlFor="description" className="sr-only">
+                                                Product Description
+                                            </label>
+                                            <textarea
+                                                id="description"
+                                                name="description"
+                                                type="textarea"
+                                                required
+                                                rows={5}
+                                                className="appearance-none  rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500  focus:z-10 sm:text-sm"
+                                                placeholder="DESCRIPTIONS"
+                                                {...register("description", { required: true, maxLength: 20000 })}
+                                            />
+                                        </div>
                                         <div className='relative'>
-                                            <label className="block text-sm font-medium text-slate-500">Photo</label>
+                                            <label className="block text-sm font-medium text-slate-500">Product Image</label>
                                             <div className="mt-1 flex items-center">
                                                 <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                                                     {imgFile ? <img src={imgFile} alt="product" /> :
-                                                        <svg className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                                                        </svg>}
+                                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M22 8a.76.76 0 0 0 0-.21v-.08a.77.77 0 0 0-.07-.16.35.35 0 0 0-.05-.08l-.1-.13-.08-.06-.12-.09-9-5a1 1 0 0 0-1 0l-9 5-.09.07-.11.08a.41.41 0 0 0-.07.11.39.39 0 0 0-.08.1.59.59 0 0 0-.06.14.3.3 0 0 0 0 .1A.76.76 0 0 0 2 8v8a1 1 0 0 0 .52.87l9 5a.75.75 0 0 0 .13.06h.1a1.06 1.06 0 0 0 .5 0h.1l.14-.06 9-5A1 1 0 0 0 22 16V8zm-10 3.87L5.06 8l2.76-1.52 6.83 3.9zm0-7.72L18.94 8 16.7 9.25 9.87 5.34zM4 9.7l7 3.92v5.68l-7-3.89zm9 9.6v-5.68l3-1.68V15l2-1v-3.18l2-1.11v5.7z"></path></svg>
+                                                        }
                                                 </span>
                                                 <label
                                                     htmlFor='file-upload'
@@ -168,13 +170,20 @@ function UploadNewProducts() {
 
                                 </div>
                                 <div className="flex items-center justify-end gap-3 p-4 mt-5 border-t border-white relative">
-                                    <button type='submit' className="px-6 py-2 text-white bg-blue-400 rounded-sm outline-none upload_btn"
+                                    <button type='submit' className="px-6 py-2 text-white bg-blue-400 hover:bg-blue-600 duration-300 rounded-sm outline-none upload_btn"
+                                        onClick={() => {
+                                            reset()
+                                        }}
+                                    >
+                                       Cancel
+                                    </button>
+                                    <button type='submit' className="px-6 py-2 text-white bg-blue-400 hover:bg-blue-600 duration-300 rounded-sm outline-none upload_btn"
                                         onClick={() => {
                                             setValue('productId', uuidv4())
                                             setValue('userEmail',user?.email)
                                         }}
                                     >
-                                        Create new product
+                                       Save
                                     </button>
                                 </div>
 
