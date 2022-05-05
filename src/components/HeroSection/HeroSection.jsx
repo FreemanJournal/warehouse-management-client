@@ -12,7 +12,7 @@ export default function HeroSection() {
               className="rounded-lg w-full h-full"
             />
           </div>
-          <h3 className="text-slate-600 drop-shadow-xl font-mont text-center md:text-3xl my-5 tracking-wider select-none uppercase">
+          <h3 className="text-slate-600 drop-shadow-xl font-mont text-center sm:text-3xl my-5 tracking-wider select-none uppercase">
           A general warehouse for the 21st century
           </h3>
 

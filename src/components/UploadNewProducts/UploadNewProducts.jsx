@@ -44,7 +44,7 @@ function UploadNewProducts() {
         <>
             <section className="bg-amber-300 m-3 pt-10 rounded-lg flex flex-col relative" >
                 <div className="px-6 py-8 pt-24">
-                    <div className=" md:w-8/12 mx-auto  rounded-md shadow-lg  bg-white ">
+                    <div className=" sm:w-8/12 mx-auto  rounded-sm shadow-lg  bg-white ">
                         <div className="flex items-center justify-between p-4 border-b border-white">
                             <h4 className="text-lg text-slate-600 font-mont font-semibold">
                                 Add new product
@@ -53,9 +53,9 @@ function UploadNewProducts() {
                         <div className="space-y-2 p-4 mt-3 text-[15.5px] leading-relaxed text-gray-500">
                             <form className="" onSubmit={handleSubmit(onCreateProductHandler)}>
                                 <input type="hidden" name="remember" defaultValue="true" />
-                                <div className="flex flex-col md:flex-row  gap-5">
-                                    <div className="md:w-1/2 flex flex-col gap-5">
-                                        <div className='border rounded-md'>
+                                <div className="flex flex-col sm:flex-row  gap-5">
+                                    <div className="sm:w-1/2 flex flex-col gap-5">
+                                        <div className='border rounded-sm'>
                                             <label htmlFor="title" className="sr-only">
                                                 Title
                                             </label>
@@ -65,13 +65,13 @@ function UploadNewProducts() {
                                                 type="text"
                                                 autoComplete="title"
                                                 required
-                                                className="appearance-none rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm border "
+                                                className="appearance-none rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm border "
                                                 placeholder="Write product name..."
                                                 {...register("title", { required: true, maxLength: 100 })}
                                             />
                                         </div>
 
-                                        <div className='border rounded-md'>
+                                        <div className='border rounded-sm'>
                                             <label htmlFor="description" className="sr-only">
                                                 Product Description
                                             </label>
@@ -80,12 +80,12 @@ function UploadNewProducts() {
                                                 name="description"
                                                 type="textarea"
                                                 required
-                                                className="appearance-none  rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 border focus:z-10 sm:text-sm"
+                                                className="appearance-none  rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 border focus:z-10 sm:text-sm"
                                                 placeholder="Write your product description..."
                                                 {...register("description", { required: true, maxLength: 20000 })}
                                             />
                                         </div>
-                                        <div className='border rounded-md'>
+                                        <div className='border rounded-sm'>
                                             <label htmlFor="price" className="sr-only">
                                                 Price
                                             </label>
@@ -95,14 +95,14 @@ function UploadNewProducts() {
                                                 type="number"
                                                 autoComplete="price"
                                                 required
-                                                className="appearance-none border  rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                className="appearance-none border  rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
                                                 placeholder="Enter product price..."
                                                 {...register("price", { required: true, maxLength: 10 })}
                                             />
                                         </div>
                                     </div>
-                                    <div className="md:w-1/2 flex flex-col gap-5">
-                                        <div className='border rounded-md'>
+                                    <div className="sm:w-1/2 flex flex-col gap-5">
+                                        <div className='border rounded-sm'>
                                             <label htmlFor="quantity" className="sr-only">
                                                 quantity
                                             </label>
@@ -112,12 +112,12 @@ function UploadNewProducts() {
                                                 type="number"
                                                 autoComplete="quantity"
                                                 required
-                                                className="appearance-none border rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                className="appearance-none border rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
                                                 placeholder="Enter product quantity..."
                                                 {...register("quantity", { required: true, maxLength: 10 })}
                                             />
                                         </div>
-                                        <div className='border rounded-md'>
+                                        <div className='border rounded-sm'>
                                             <label htmlFor="supplier" className="sr-only">
                                                 supplier
                                             </label>
@@ -127,7 +127,7 @@ function UploadNewProducts() {
                                                 type="text"
                                                 autoComplete="supplier"
                                                 required
-                                                className="appearance-none border rounded-md relative block w-full px-3 py-3 shadow-md placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
+                                                className="appearance-none border rounded-sm relative block w-full px-3 py-3 shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 focus:z-10 sm:text-sm"
                                                 placeholder="Enter supplier name..."
                                                 {...register("supplier", { required: true, maxLength: 100 })}
                                             />
@@ -143,7 +143,7 @@ function UploadNewProducts() {
                                                 </span>
                                                 <label
                                                     htmlFor='file-upload'
-                                                    className="ml-5 bg-white py-2 px-3 border  border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 "
+                                                    className="ml-5 bg-white py-2 px-3 border  border-gray-300 rounded-sm shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 "
                                                 >
 
                                                     <div className="input-file">
@@ -168,7 +168,7 @@ function UploadNewProducts() {
 
                                 </div>
                                 <div className="flex items-center justify-end gap-3 p-4 mt-5 border-t border-white relative">
-                                    <button type='submit' className="px-6 py-2 text-white bg-blue-400 rounded-md outline-none upload_btn"
+                                    <button type='submit' className="px-6 py-2 text-white bg-blue-400 rounded-sm outline-none upload_btn"
                                         onClick={() => {
                                             setValue('productId', uuidv4())
                                             setValue('userEmail',user?.email)
@@ -185,7 +185,7 @@ function UploadNewProducts() {
                 </div>
                 <div className="mx-auto relative">
                     <Slide bottom>
-                        <button type="button" onClick={() => navigate('/manageInventory')} className=" py-2 px-4  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
+                        <button type="button" onClick={() => navigate('/manageInventory')} className=" py-2 px-4  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-sm   rounded-lg ">
                             Manage Inventories
                         </button>
                     </Slide>

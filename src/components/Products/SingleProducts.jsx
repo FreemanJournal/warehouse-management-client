@@ -82,7 +82,7 @@ export default function SingleProducts({ id }) {
     return (
         <section className="bg-amber-300 m-3 pt-10  rounded-lg flex flex-col" >
             <div className="  px-6 py-8 lg:flex-shrink-1 lg:p-12">
-                <div className="mt-8 flex flex-col md:flex-row gap-5 overflow-hidden">
+                <div className="mt-8 flex flex-col sm:flex-row gap-5 overflow-hidden">
                     <div className="text-center w-full flex ">
                         <Slide left>
                             <img src={image} alt="" className='mx-auto rounded-2xl' />
@@ -125,11 +125,11 @@ export default function SingleProducts({ id }) {
                                     </div>
                                 </div>
                                 <div className="mt-12">
-                                    <div className="rounded-md  flex gap-10">
-                                        <button type="button" onClick={() => deliveredHandler(productQuantity - 1)} className={` ${productQuantity ? "bg-emerald-600" : "bg-pink-600 pointer-events-none"} py-2 px-4  hover:bg-emerald-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg`}>
+                                    <div className="rounded-sm  flex gap-10">
+                                        <button type="button" onClick={() => deliveredHandler(productQuantity - 1)} className={` ${productQuantity ? "bg-emerald-600" : "bg-pink-600 pointer-events-none"} py-2 px-4  hover:bg-emerald-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-sm   rounded-lg`}>
                                             {productQuantity ? "Delivered" : "Sold"}
                                         </button>
-                                        <button type="button" onClick={restockHandler} className="py-2 px-4  bg-slate-600 hover:bg-slate-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
+                                        <button type="button" onClick={restockHandler} className="py-2 px-4  bg-slate-600 hover:bg-slate-700  text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-sm   rounded-lg ">
                                             Restock
                                         </button>
                                     </div>
@@ -142,7 +142,7 @@ export default function SingleProducts({ id }) {
                 </div>
             </div>
             <Slide bottom>
-                <button type="button" onClick={() => navigate('/manageInventory')} className="py-2 px-4 w-56 mx-auto  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md   rounded-lg ">
+                <button type="button" onClick={() => navigate('/manageInventory')} className="py-2 px-4 w-56 mx-auto  mb-10 bg-slate-600 hover:bg-slate-700  text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-sm   rounded-lg ">
                     Manage Inventories
                 </button>
             </Slide>

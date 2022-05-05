@@ -30,11 +30,11 @@ export default function Navbar() {
       <Disclosure as="nav" className="bg-transparent">
         {({ open }) => (
           <>
-            <div className="max-w-7xl mx-auto px-2 md:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
               <div className="relative flex items-center justify-between h-16">
                 {/* Mobile menu open and close button*/}
-                <div className="absolute mt-10 right-5 flex items-center md:hidden pointer-events-auto">
-                  <Disclosure.Button className="p-2 rounded-md text-slate-800  focus:outline-none">
+                <div className="absolute mt-10 right-5 flex items-center sm:hidden pointer-events-auto">
+                  <Disclosure.Button className="p-2 rounded-sm text-slate-800  focus:outline-none">
                     {open ? (
                       <BsListNested className="block h-6 w-6" />
                     ) : (
@@ -43,18 +43,18 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 {/* Desktop Menu */}
-                <div className=" flex-1 flex items-center justify-center md:items-stretch md:justify-between mt-10 pointer-events-auto">
+                <div className=" flex-1 flex items-center justify-center sm:items-stretch sm:justify-between mt-10 pointer-events-auto">
                   <div className="flex-shrink-0 flex items-center">
                     <h1 className='text-slate-600 drop-shadow-lg uppercase text-2xl tracking-wide font-mont font-bold cursor-pointer pointer-events-auto' onClick={() => navigate('/')} >The green warehouse</h1>
                   </div>
-                  <div className="hidden md:block md:ml-6">
+                  <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4 my-5">
                       {menu.map((item) => (
                         <NavLink
                           key={item.name}
                           to={item.href}
                           style={({ isActive }) => isActive ? { color: "#242B2E" } : { color: "" }}
-                          className={`${item.current ? 'block' : "hidden"} bg-transparent uppercase font-mont  cursor-pointer text-slate-500  hover:text-slate-800 px-3 py-2 rounded-md text-base font-medium`}
+                          className={`${item.current ? 'block' : "hidden"} bg-transparent uppercase font-mont  cursor-pointer text-slate-500  hover:text-slate-800 px-3 py-2 rounded-sm text-base font-medium`}
 
                         >
                           {item.name}
@@ -62,7 +62,7 @@ export default function Navbar() {
                       ))}
                       {/* Log Out */}
                       {user && <button
-                        className='bg-transparent uppercase font-mont  cursor-pointer text-slate-500  hover:text-slate-800 px-3 py-2 rounded-md text-base font-medium'
+                        className='bg-transparent uppercase font-mont  cursor-pointer text-slate-500  hover:text-slate-800 px-3 py-2 rounded-sm text-base font-medium'
                         onClick={() => {
                           localStorage.removeItem('authAccessToken')
                           signOut(auth)
@@ -78,7 +78,7 @@ export default function Navbar() {
             </div>
             {/* Dropdown Menu */}
             <Disclosure.Panel className="pointer-events-auto">
-              <div className="px-2 py-3 rounded-md flex flex-col">
+              <div className="px-2 py-3 rounded-sm flex flex-col">
                 {menu.map((item) => {
                   return (
                     <Disclosure.Button
@@ -86,7 +86,7 @@ export default function Navbar() {
                       as={NavLink}
                       to={item.href}
                       style={{ borderBottom: "1px solid #758283" }}
-                      className={`${item.current ? 'block' : "hidden"} bg-slate-700 mx-auto cursor-pointer uppercase font-mont text-white  hover:bg-slate-600 px-3 py-2 w-11/12 first:rounded-t-md last:rounded-b-md  text-base font-medium text-center`}
+                      className={`${item.current ? 'block' : "hidden"} bg-slate-700 mx-auto cursor-pointer uppercase font-mont text-white  hover:bg-slate-600 px-3 py-2 w-11/12 first:rounded-t-sm last:rounded-b-sm  text-base font-medium text-center`}
                     >
                       {item.name}
                     </Disclosure.Button>
@@ -94,7 +94,7 @@ export default function Navbar() {
                 })}
                 {/* Log Out */}
                 {user && <button
-                  className='bg-slate-700 mx-auto cursor-pointer uppercase font-mont text-white  hover:bg-slate-600 px-3 py-2 w-11/12 first:rounded-t-md last:rounded-b-md  text-base font-medium text-center'
+                  className='bg-slate-700 mx-auto cursor-pointer uppercase font-mont text-white  hover:bg-slate-600 px-3 py-2 w-11/12 first:rounded-t-sm last:rounded-b-sm  text-base font-medium text-center'
                   onClick={() => {
                     localStorage.removeItem('authAccessToken')
                     signOut(auth)

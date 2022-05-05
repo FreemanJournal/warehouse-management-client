@@ -59,7 +59,7 @@ export default function TestimonialSlider() {
                             <SwiperSlide className="text-center" key={index}>
 
                                 <div className="testimonial-card">
-                                    <div className="md:w-1/2 mx-auto">
+                                    <div className="sm:w-1/2 mx-auto">
                                         <i className=""> <RiDoubleQuotesL /> </i>
                                         <p className="">{comment}</p>
                                         <h5 className="font-bold font-mont">{name}</h5>

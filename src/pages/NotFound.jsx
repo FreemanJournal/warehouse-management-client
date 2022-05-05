@@ -7,9 +7,9 @@ export default function NotFound() {
     <>
       <main className="bg-amber-300 relative overflow-hidden h-screen border-8 border-white">
       
-        <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32">
+        <div className="container mx-auto px-6 sm:px-12 relative z-10 flex items-center py-32">
           <div className="container mx-auto px-6 flex flex-col justify-between items-center relative">
-            <div className="flex w-full items-center justify-center space-x-12 flex-col md:flex-row mb-16 md:mb-8">
+            <div className="flex w-full items-center justify-center space-x-12 flex-col sm:flex-row mb-16 sm:mb-8">
               <h1 className="font-thin text-center text-6xl text-gray-800 uppercase">
                 page is not found
               </h1>

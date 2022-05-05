@@ -4,10 +4,10 @@ function Articles() {
     const faqsList = [
         {
             q: "Differences between javascript and node js ?",
-            a: `Javascript is a programming language and node js is a javascript runtime environment.We use node js in server side application and javascript in client side.Javascript cannot run outside of browser.With the help of node js we can implement javascript features outside of browser.Some of the javascript popular frameworks are React,Vue and angular and node js have express,socket,meteor etc.  `
+            a: `Javascript is a programming language and node js is a javascript runtime environment.We use node js in server side application and javascript in client side.Javascript cannot run outside of browser.With the help of node js we can implement javascript features outside of browser.Some of the javascript popular frameworks are React,Vue and Angular and node js have Express,Socket,Meteor etc.  `
         },
         {
-            q: "When should you use node js and when should you use mongodb??",
+            q: "When should you use node js and when should you use mongodb?",
             a: "This generator doesn't include most common questions. The thought is that you can come up with common questions on your own so most of the questions in this generator."
         },
         {
