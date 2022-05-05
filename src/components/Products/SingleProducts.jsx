@@ -3,7 +3,6 @@ import { Slide } from 'react-reveal';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
-import { useSWRConfig } from 'swr';
 import { updateItemQtn } from '../../api/api';
 import { GlobalContext } from '../../context/GlobalContext';
 import "./sweetAlert.css";
@@ -62,7 +61,6 @@ export default function SingleProducts({ id }) {
             })
             if (parseInt(quantity) >= 0) {
                 deliveredHandler(quantity)
-               
                 swal.stopLoading();
                 swal.close();
             } else {

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import useSWR from "swr";
 const fetcher = url => axios.get(url).then(res => res.data)
 function Articles() {
