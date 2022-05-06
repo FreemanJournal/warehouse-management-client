@@ -1,9 +1,6 @@
-import axios from "axios";
-import useSWR from "swr";
-const fetcher = url => axios.get(url).then(res => res.data)
-function Articles() {
+function Articles({data}) {
 
-    const { data, error } = useSWR(`${process.env.REACT_APP_uri}/blogs`, fetcher)
+  
  
     return (
         <>

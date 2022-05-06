@@ -26,7 +26,7 @@ export default function LoginPage() {
     window.scrollTo(0, 0)
   }, [])
 
-  if (isLoading) {
+  if (isLoading || loading) {
     return <Loader isLoading={isLoading} />
   }
 
