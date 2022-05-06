@@ -13,11 +13,11 @@ The Green Warehouse is a modern multi-vendor warehouse solution.It is designed t
 * this site is fully mobile responsive
 
 ### Used Technologies
-* React
+* React & Tailwind
 * Firebase Authentication & hosting
 * JWT Authentication
-* library - axios,swr,useForm,sweetAlert etc
-* MongoDb,Express, Nodejs
+* library - axios,swr,useForm,swiper,sweetAlert etc
+* MongoDb,Express & Nodejs
 * Heroku for Database hosting 
 
 
