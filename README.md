@@ -16,7 +16,7 @@ The Green Warehouse is a modern multi-vendor warehouse solution.It is designed t
 * React
 * Firebase Authentication & hosting
 * JWT Authentication
-* library - axios,ser,useForm,sweetAlert etc
+* library - axios,swr,useForm,sweetAlert etc
 * MongoDb,Express, Nodejs
 * Heroku for Database hosting 
 
