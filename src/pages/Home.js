@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import FAQ from '../components/FAQ/FAQ'
 import Footer from '../components/Footer/Footer'
 import HeroSection from '../components/HeroSection/HeroSection'
@@ -21,6 +22,9 @@ export default function Home() {
 
   return (
     <div className='relative'>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <Navbar />
       <HeroSection />
       <HomeInventories />

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Registration from '../components/Authentication/Registration'
 import Footer from '../components/Footer/Footer'
@@ -18,8 +19,8 @@ export default function RegistrationPage() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    
- 
+
+
     // createToken(user)
     let from = location.state?.from?.pathname || "/";
     user && navigate(from, { replace: true })
@@ -35,6 +36,9 @@ export default function RegistrationPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Registration</title>
+      </Helmet>
       <Navbar />
       <Registration />
       <Footer />

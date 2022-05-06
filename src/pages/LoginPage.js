@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { Helmet } from 'react-helmet-async'
 import { useLocation, useNavigate } from 'react-router-dom'
 import LoginForm from '../components/Authentication/LoginForm'
 import Footer from '../components/Footer/Footer'
@@ -32,6 +33,9 @@ export default function LoginPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Log In</title>
+      </Helmet>
       <Navbar />
       <LoginForm />
       <Footer />

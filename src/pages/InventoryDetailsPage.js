@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate, useParams } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
@@ -21,6 +22,9 @@ export default function InventoryDetailsPage() {
 
     return (
         <>
+            <Helmet>
+                <title>Inventory Details</title>
+            </Helmet>
             <Navbar />
             <SingleProducts id={id} />
             <Footer />

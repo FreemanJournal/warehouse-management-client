@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import useSWR from 'swr'
 import Footer from '../components/Footer/Footer'
 import Navbar from '../components/Navbar/Navbar'
@@ -19,6 +20,9 @@ export default function InventoriesPage() {
   }
   return (
     <>
+      <Helmet>
+        <title>Inventories</title>
+      </Helmet>
       <Navbar />
       <ManageInventories products={data}/>
       <Footer />
