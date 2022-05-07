@@ -6,7 +6,7 @@ import Routing from './routing/Routing';
 function App() {
 
   return (
-    <div className="container relative">
+    <div className="relative">
       <HelmetProvider>
         <Routing />
       </HelmetProvider>
