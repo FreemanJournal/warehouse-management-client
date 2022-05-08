@@ -161,8 +161,10 @@ function UploadNewProducts() {
                                                     </div>
 
                                                 </label>
+                                               
 
                                             </div>
+                                            <p className='text-sm'><span className='text-pink-500'>Note :</span> Please upload a small size image</p>
                                         </div>
                                     </div>
 
