@@ -9,22 +9,22 @@ import Loader from '../utilities/Loader'
 
 const getProducts = (uri) => axios.get(uri).then(res => res.data);
 export default function InventoriesPage() {
-  const { data, error } = useSWR(`${process.env.REACT_APP_uri}/items`, getProducts)
+  // const { data, error } = useSWR(`${process.env.REACT_APP_uri}/items`, getProducts)
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
-  if (!data) {
-    return <Loader isLoading={!data} />
-  }
+  // if (!data) {
+  //   return <Loader isLoading={!data} />
+  // }
   return (
     <>
       <Helmet>
         <title>Inventories</title>
       </Helmet>
       <Navbar />
-      <ManageInventories products={data}/>
+      <ManageInventories />
       <Footer />
     </>
   )
